@@ -1,0 +1,24 @@
+<?wh
+LOADLIB "wh::witty.whlib";
+LOADLIB "module::publisher/siteapi.whlib";
+LOADLIB "module::publisher/webdesign.whlib";
+LOADLIB "module::system/database.whlib";
+LOADLIB "module::system/whfs.whlib";
+
+PUBLIC OBJECTTYPE webwerfDesign EXTEND WebDesignBase
+<
+  UPDATE PUBLIC RECORD FUNCTION GetPageConfig()
+  {
+    RETURN DEFAULT RECORD;
+  }
+
+  /*
+  UPDATE PUBLIC MACRO PrintErrorPage(INTEGER errorcode, RECORD harescriptinfo, STRING url)
+  {
+    IF (errorcode = 404)
+      EmbedWittyComponent("404", DEFAULT RECORD);
+    ELSE
+      WebDesignBase::PrintErrorPage(errorcode, harescriptinfo, url);
+  }
+  */
+>;

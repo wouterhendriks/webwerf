@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<siteprofile xmlns="http://www.webhare.net/xmlns/publisher/siteprofile"
+             xmlns:t="http://www.webhare.net/xmlns/tollium/screens"
+             xmlns:m="http://www.webhare.net/xmlns/system/moduledefinition"
+             xmlns:p="http://www.webhare.net/xmlns/publisher/components"
+             xmlns:w="http://www.webhare.net/xmlns/wrd/components">
+
+  <!-- RTD default settings -->
+  <apply>
+    <to type="file" filetype="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
+    <richdocumenteditor>
+      <structuredefinition fullpath="rtd/rtd-structure.xml" />
+      <css fullpath="css/webwerf.scss" />
+    </richdocumenteditor>
+  </apply>
+
+  <!-- Global site settings -->
+  <apply>
+    <to type="all" />
+
+    <!-- Setup default webdesign -->
+    <webdesign designfolder="."
+               witty="templates/webwerf.witty"
+               library="lib/webwerf.whlib"
+               objectname="webwerfDesign"
+               basedependency="js/webwerf.es"
+               maxcontentwidth="960px">
+    </webdesign>
+
+    <!-- Set site language -->
+    <sitelanguage lang="nl" />
+
+    <!-- Republish all files upon every change -->
+    <republish folder="/" indexonly="false" recursive="true" />
+
+    <!-- Allow RTD documents -->
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
+
+    <enabledrafts />
+
+    <!-- Disable the legacy site settings -->
+    <disablelegacysitesettings notemplateprofile="true" />
+
+    <!-- Enable webpack -->
+    <webpackintegration xmlns="http://www.webhare.net/xmlns/webpack" />
+
+    <!-- disable keywords field -->
+    <baseproperties keywords="false" />
+
+    <!-- property 'name' on 'account' -->
+    <!--
+    <analytics xmlns="http://www.webhare.net/xmlns/socialite" type="universal" code="UA-XXXXXXX-X" />
+    -->
+
+    <!-- in this site a Word document is not a publishable type, so treat it as downloadable -->
+    <uploadtypemapping filenamemask="*.doc*" filetype="http://www.webhare.net/xmlns/publisher/msworddownload" mimetypemask="application/msword" />
+    <uploadtypemapping filenamemask="*.doc*" filetype="http://www.webhare.net/xmlns/publisher/msworddownload" mimetypemask="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+
+    <denyfiletype typedef="*" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/imagefile" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/pdffile" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/externallink" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/internallink" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
+
+  </apply>
+
+  <!-- ***********************************************************************
+
+       Homepage
+
+  *********************************************************************** -->
+  <!-- FIXME: Update namespace URL!
+  <contenttype namespace="http://www.example.com/xmlns/filetype/home"></contenttype>
+  <filetype typedef="http://www.example.com/xmlns/filetype/home"
+            title="Homepage"
+            blobiscontent="false"
+            ispublishable="true"
+            tolliumicon="tollium:actions/home"
+            isacceptableindex="false"
+            ispublishedassubdir="true"
+            needstemplate="true"
+            />
+
+  <apply>
+    <to type="file" filetype="http://www.example.com/xmlns/filetype/home" />
+    <bodyrenderer library="pages/home/home.whlib" objectname="homepage" />
+    <setobjecteditor name="publisher:propertydialog" />
+  </apply>
+  -->
+
+</siteprofile>

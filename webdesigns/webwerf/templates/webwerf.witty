@@ -1,0 +1,25 @@
+[component htmlhead]
+  <!--
+   _   _              _                _____
+  | \ | |            | |       ___    /  __ \
+  |  \| | ___ _ __ __| |___   ( _ )   | /  \/ ___  _ __ ___  _ __   __ _ _ __  _   _
+  | . ` |/ _ \ '__/ _` / __|  / _ \/\ | |    / _ \| '_ ` _ \| '_ \ / _` | '_ \| | | |
+  | |\  |  __/ | | (_| \__ \ | (_>  | | \__/\ (_) | | | | | | |_) | (_| | | | | |_| |
+  \_| \_/\___|_|  \__,_|___/  \___/\/  \____/\___/|_| |_| |_| .__/ \__,_|_| |_|\__, |
+                                                            | |                 __/ |
+                                                            |_|                |___/
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+[/component]
+
+[component htmlbody]
+  <main>
+    [contents]
+  </main>
+[/component]
+
+[! component 404]
+  <h1>Niet gevonden</h1>
+  <p>De opgegeven pagina kon helaas niet worden gevonden.</p>
+[/component !]

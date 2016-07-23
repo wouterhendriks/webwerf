@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.webhare.net/xmlns/system/moduledefinition">
+
+  <meta>
+    <version>0.1</version>
+    <description>Webwerf</description>
+    <author>Nerds &amp; Company</author>
+    <packaging download="true"/>
+  </meta>
+
+  <publisher>
+    <installsite name="Webwerf" storage="webwerf.zip"/>
+  <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl"/></publisher>
+
+</module>
