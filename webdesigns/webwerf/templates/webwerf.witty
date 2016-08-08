@@ -1,22 +1,158 @@
 [component htmlhead]
-  <!--
-   _   _              _                _____
-  | \ | |            | |       ___    /  __ \
-  |  \| | ___ _ __ __| |___   ( _ )   | /  \/ ___  _ __ ___  _ __   __ _ _ __  _   _
-  | . ` |/ _ \ '__/ _` / __|  / _ \/\ | |    / _ \| '_ ` _ \| '_ \ / _` | '_ \| | | |
-  | |\  |  __/ | | (_| \__ \ | (_>  | | \__/\ (_) | | | | | | |_) | (_| | | | | |_| |
-  \_| \_/\___|_|  \__,_|___/  \___/\/  \____/\___/|_| |_| |_| .__/ \__,_|_| |_|\__, |
-                                                            | |                 __/ |
-                                                            |_|                |___/
-  -->
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 [/component]
 
 [component htmlbody]
-  <main>
-    [contents]
-  </main>
+  [!<div class="colors">
+    <div class="color green"></div>
+    <div class="color black"></div>
+    <div class="color yellow"></div>
+    <div class="color red"></div>
+    <div class="color blue"></div>
+  </div>
+<br /><br /><br /><br />
+
+  <div class="container"></div>
+!]
+
+<div class="siteheader">
+  <header class="siteheader__container">
+    <div class="siteheader__homelink">
+      <img class="siteheader__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
+    </div>
+    <nav class="siteheader__nav">
+      <ul class="siteheader__list">
+        <li class="siteheader__listitem">
+          <a href="" class="siteheader__itemlink">Start</a>
+        </li>
+        <li class="siteheader__listitem">
+          <a href="" class="siteheader__itemlink">Over webwerf</a>
+        </li>
+        <li class="siteheader__listitem">
+          <a href="" class="siteheader__itemlink">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<div class="edge--bottom hero">
+  <span class="before"></span>
+  <img class="hero__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top--reverse infoblock--2 infoblock--even">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Webwerf</h1>
+    <p>Met ruim 13 jaar ervaring in alles wat met het web te maken heeft weet je zeker dat je met Webwerf een betrouwbare partner hebt.</p>
+    <p>Persoonlijk en betrokken.</p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top infoblock--3 infoblock--odd">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Wat doet Webwerf?</h1>
+    <p>Samengevat ‘websites en alles daarom heen’. Van begin tot eind kun je de bouw en oplevering van je website gerust aan ons overlaten, inclusief domeinnaam en hosting. Wij staan voor razendsnel ladende websites die stabiel en veilig blijven draaien onder alle omstandigheden.</p>
+    <p>Ook o.a. web-applicaties, intranetten en e-mailcampagnes behoren tot de mogelijkheden.</p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top--reverse infoblock--4 infoblock--even">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Ervaring</h1>
+    <p>Webwerf heeft in de afgelopen jaren ruime ervaring opgebouwd met websites en apps rondom grote (prijswinnende) reclamecampagnes, maar ook met kleinere websites, sommigen binnen een dag opgeleverd. Dankzij dit brede spectrum is geen project te klein of te groot.</p>
+    <p>Kennis van Google Analytics, Social Media, User Interface.</p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top infoblock--2 infoblock--odd">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>CMS-platform</h1>
+    <p>We maken gebruik van het CMS-platform WebHare. Hiermee is véél meer mogelijk dan met een gebruikelijk CMS. Voor de voordelen, klik verder.</p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top--reverse infoblock--3 infoblock--even">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Portfolio</h1>
+    <p>
+      Mr.Prezident<br />
+      8ting.nl<br />
+      WST Hellendoorn<br />
+      Koopman Vastgoed<br />
+      Private Lease Almelo<br />
+      Colour 4 Cotton<br />
+      Fotostudio Visschedijk<br />
+      Golfpark Weleveld<br />
+      Oude Breuil<br />
+      XO Food Group
+    </p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top infoblock--4 infoblock--odd">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Samenwerkingen</h1>
+    <p>Webwerf staat altijd open voor samenwerking met designers en reclamebureaus, waarbij Webwerf de techniek (zowel front- als backend) op zich kan nemen.</p>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock edge--top--reverse infoblock--2 infoblock--even">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Overige diensten</h1>
+    <ul>
+      <li>domeinnaambeheer</li>
+      <li>backend bouwen voor frontend/app/narrowcasting</li>
+      <li>(HTML5) banners</li>
+      <li>consultancy, bijv. bij inkoop ICT</li>
+    </ul>
+  </div>
+  <span class="after"></span>
+</div>
+
+<div class="infoblock -orange edge--top infoblock--3 infoblock--odd">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Contact</h1>
+    <p>Contact opnemen met Webwerf?</p>
+    <p>Vul dan onderstaand formulier in en we reageren zo snel mogelijk.
+    <form class="form">
+      <div class="form__row">
+        <div class="form__input-container">
+          <input class="form__input" type="text" id="form-name" />
+          <label class="form__label" for="form-name">Naam</label>
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="form__input-container">
+          <input class="form__input" type="text" id="form-email" />
+          <label class="form__label" for="form-email">E-mailadres</label>
+        </div>
+      </div>
+      <div class="form__row form__row--textarea form__row--active">
+        <div class="form__input-container">
+          <textarea class="form__input form__input--textarea" id="form-message"></textarea>
+          <label class="form__label" for="form-message">Bericht</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 [/component]
 
 [! component 404]

@@ -1,0 +1,128 @@
+$transition-duration: .2s;
+
+.siteheader {
+  &__container {
+    justify-content: space-between;
+    max-width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 0;
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+  }
+
+  &__container,
+  &__list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__list {
+    flex: none;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__listitem {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  &__itemlink:hover {
+    background: #e1ddd9;
+  }
+
+  &__itemlink {
+    display: block;
+    margin: 0;
+    color: #4a4a4a;
+    font-size: rem(16px);
+    text-decoration: none;
+    padding: 39px 15px;
+    white-space: nowrap;
+  }
+
+  &__itemlink:hover {
+  }
+
+  &__itemlink--selected {
+  }
+
+  &__listitem:last-child &__itemlink {
+    padding-right: 0;
+  }
+
+  &__logo {
+    //position: relative;
+    //top: 9px;
+    //width: 96px;
+  }
+
+  &__mobile-menu-button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 40px;
+    padding: 0 20px;
+    transition: all .5s;
+    font-size: rem(18px);
+    font-weight: 500;
+    line-height: 40px;
+    text-decoration: none;
+
+    &--active {
+      background: #e1ddd9;
+    }
+  }
+/*
+  @media (max-width: 1200px) {
+    &__homelink {
+    }
+
+    &__nav {
+    }
+  }
+
+  @media (max-width: 1023px) { // Pure grid: lg; Pure works with min-width, hence the -1
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .97);
+    z-index: 99999;
+
+    &__container {
+      position: relative;
+      height: 40px;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__mobile-menu-button {
+      display: inline-block;
+    }
+
+    &__logo {
+      top: 10px;
+      width: auto;
+    }
+
+    &__itemlink {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }*/
+}

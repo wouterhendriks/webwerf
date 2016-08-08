@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "description": "",
   "main": "",
-  "directories": {
-  },
+  "directories": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "unlicensed",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "npm-font-open-sans": "0.0.3",
+    "velocity-animate": "^1.2.3"
+  }
 }

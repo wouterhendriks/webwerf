@@ -1,0 +1,23 @@
+.hero {
+  padding: 0 30vh 0;
+  height: 60vh;
+
+  h1 {
+    padding-bottom: 20px;
+    border-bottom: 5px solid $black;
+    text-transform: uppercase;
+    color: $green;
+    font-size: rem(80px);
+    font-family: Roboto, sans-serif;
+    letter-spacing: 1px;
+  }
+
+  &__logo {
+    position: absolute;
+    // top set in JS
+    top: 0;
+    left: 20vw;
+    width: auto;
+    // height set in JS
+  }
+}
