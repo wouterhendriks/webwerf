@@ -1,0 +1,39 @@
+<?wh
+LOADLIB "module::system/adhocdump.whlib";
+LOADLIB "module::system/database.whlib";
+LOADLIB "module::system/mailer.whlib";
+LOADLIB "module::system/webserver.whlib";
+LOADLIB "wh::files.whlib";
+
+PUBLIC RECORD FUNCTION SubmitContactForm(RECORD formfields)
+{
+  GetPrimary()->BeginWork();
+
+  OBJECT dumpapi := OpenAdhocDump("sigmax_security_event:form");
+  dumpapi->DirectDump(GetClientRemoteIP(), formfields);
+
+  RECORD ARRAY fields :=
+     [[ title := "Naam", value := formfields.name ]
+     ,[ title := "E-mailadres", value := formfields.email ]
+     ,[ title := "Bericht", value := formfields.message ]
+     ];
+
+  STRING msg := "<br />";
+  FOREVERY (RECORD field FROM fields)
+    IF (field.value != "")
+      msg := msg || "<b>" || EncodeHTML(field.title) || "</b>: " || EncodeHTML(field.value) || "<br /><br />";
+
+  OBJECT mail := MakeEmailComposer();
+  mail->origin := "webwerf_contactform";
+  mail->mailfrom := "wouter@webwerf.nl";
+  mail->mailto := [ "wouter@webwerf.nl" ];
+  mail->subject := "Contactformulier Webwerf ingevuld";
+  mail->SetRichBody(StringToBlob(msg), "text/html");
+  mail->QueueMailInWork();
+
+  RECORD ARRAY errors := GetPrimary()->CommitWork();
+
+  RETURN [ success := Length(errors) = 0
+         , errors := errors
+         ];
+}

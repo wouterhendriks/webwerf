@@ -1,20 +1,24 @@
 $transition-duration: .2s;
 
 .siteheader {
-  &__container {
-    justify-content: space-between;
-    max-width: 1200px;
-    height: 100px;
-    margin: 0 auto;
-    padding: 0;
-    background: rgba(0,0,0,.5);
-    position: absolute;
-    top: -100%;
-    left: 0;
-    right: 0;
+  justify-content: space-between;
+  max-width: 1200px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0;
+  background: rgba(0,0,0,.7);
+  position: fixed;
+  top: -100%;
+  left: 0;
+  right: 0;
+  transition: all .3s;
+  z-index: 10;
+
+  html.siteheader-visible & {
+    top: 0;
   }
 
-  &__container,
+  &,
   &__list {
     display: flex;
     flex-direction: row;

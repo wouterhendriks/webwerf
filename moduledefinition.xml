@@ -2,14 +2,25 @@
 <module xmlns="http://www.webhare.net/xmlns/system/moduledefinition">
 
   <meta>
-    <version>0.1</version>
+    <version>1.0</version>
     <description>Webwerf</description>
-    <author>Nerds &amp; Company</author>
+    <author>Wouter Hendriks</author>
     <packaging download="true"/>
   </meta>
 
+  <adhocdumps>
+    <adhocdump tag="contactform" title="Webwerf contact formulier" />
+  </adhocdumps>
+
   <publisher>
     <installsite name="Webwerf" storage="webwerf.zip"/>
-  <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl"/></publisher>
+    <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl"/>
+  </publisher>
+
+  <services>
+    <webservice name="contactform" transports="jsonrpc" library="rpc.whlib" requirewhaccount="false" primarytrans="auto">
+      <accesscheck />
+    </webservice>
+  </services>
 
 </module>

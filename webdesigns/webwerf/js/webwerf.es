@@ -1,48 +1,73 @@
-// whBase includes the 'config' cell, which contains useful backend/server information
-// const whBase = require('@webhare-system/compat/base');
-/*
-window.$ = window.jQuery = require('jquery'); // window. needed for Velocity
-require('../node_modules/velocity-animate/velocity.min.js');
-require('../node_modules/velocity-animate/velocity.ui.min.js');
-*/
+const whBase = require('@webhare-system/compat/base');
 
-// load the main SCSS
+// load SCSS
 require('../css/webwerf.scss');
+require('../node_modules/font-awesome/css/font-awesome.css');
 
-// support rich content (video, images)
-require('@webhare-publisher/richcontent/all');
+// require('@webhare-publisher/richcontent/all');
 
 // force a single webpack bundle by (always) loading all page-specific JavaScript here
 require('./pages.es');
 
-import * as dompack from 'dompack';
-import { qS, qSA } from 'dompack/extra/qsa';
+const jQuery = require('jquery');
+require('parsleyjs'); // Parsley needs jQuery, unfortunately
 
-const $ = qS;
-const $$ = qSA;
+// helper lib to check if element is in viewport
+var verge = require('../node_modules/verge/verge.min.js');
 
-const logoPositionTop = 200;
+import { throttle } from './utilities.es';
+
+import * as dompack from '../bower_components/dompack/src/index';
+
+const logoPositionTop = 120;
 const logoHeight = 48;
 
-/*
-document.write('<style>');
-for (var i = 0; i < fonts.length; i++) {
-  document.write("@import 'https://fonts.googleapis.com/css?family=" + fonts[i] + "';");
-}
-document.write('</style>');
-*/
-
 const angledBorder = 5.5; // keep in sync with mixins.scss
+
+// setup RPC
+const formRpc = require('./services.rpc.json');
+
+// DOM-ready function
+document.addEventListener('DOMContentLoaded', (/* event */) => {
+  //document.addEventListener("scroll", throttle(updateSiteHeaderVisibility, 50, []));
+  //updateSiteHeaderVisibility();
+
+  setupContactForm();
+
+  window.onresize = onResize;
+  onResize();
+
+  document.addEventListener('scroll', onScroll);
+
+  /*jQuery('.js-popup-webhare').
+      el.addEventListener('click', evt => {
+        evt.preventDefault();
+        $('.popup-container').style.top = (evt.clientY - 20) + 'px';
+        $('.popup-container').style.left = (evt.clientX - 20) + 'px';
+        window.setTimeout(() => {
+          $('.popup-container').classList.add('popup-container--transition-enabled');
+          $('.popup-container').classList.add('popup-container--active');
+        },50);
+      });
+    }
+  }*/
+});
+
+function updateSiteHeaderVisibility() {
+  // show site header if top logo is no longer visible
+  const showSiteHeader = !verge.inY(jQuery('.hero__logo'));
+  jQuery('html').toggleClass('siteheader-visible', showSiteHeader);
+}
 
 function onResize() {
   const scrollPos = getScrollPosition();
 
-  for (const $block of $$('.infoblock')) {
-    $block.setAttribute('data-offset-top', $block.getBoundingClientRect().top + scrollPos);
+  jQuery('.infoblock').each(function() {
+    jQuery(this).attr('data-offset-top', jQuery(this).get(0).getBoundingClientRect().top + scrollPos);
 
-    const $angledBorder = $block.querySelector('.before');
-    $angledBorder.setAttribute('data-border-offset-top', $angledBorder.getBoundingClientRect().top + scrollPos);
-  }
+    const $angledBorder = jQuery(this).find('.before');
+    $angledBorder.attr('data-border-offset-top', $angledBorder.get(0).getBoundingClientRect().top + scrollPos);
+  })
 }
 
 function getScrollPosition() {
@@ -54,71 +79,95 @@ function getScrollPosition() {
   return h[st] || b[st];
 }
 
-
 function onScroll() {
-
   const scrollPos = getScrollPosition();
 
-  for (const $block of $$('.infoblock')) {
-    const $before = $block.querySelector('.before');
-    const elOffsetTop = parseInt($block.getAttribute('data-offset-top'), 10);
-    const borderOffsetTop = parseInt($before.getAttribute('data-border-offset-top'), 10);
+  jQuery('.infoblock').each(function() {
+    const $before = jQuery(this).find('.before');
+    const elOffsetTop = parseInt(jQuery(this).attr('data-offset-top'), 10);
+    const borderOffsetTop = parseInt($before.attr('data-border-offset-top'), 10);
 
     if (scrollPos >= borderOffsetTop && scrollPos <= elOffsetTop) {
       const howFarAlong = scrollPos - borderOffsetTop;
       const percDone = howFarAlong / (elOffsetTop - borderOffsetTop);
       let setAngle = (1 - percDone) * angledBorder;
 
-      if ($block.classList.contains("edge--top--reverse"))
+      if (jQuery(this).hasClass("edge--top--reverse"))
         setAngle = -1 * setAngle;
 
-      $before.style.transform = 'skewY(' + setAngle + 'deg)';
+      $before.css('transform', 'skewY(' + setAngle + 'deg)');
     } else if (scrollPos < borderOffsetTop) {
 
       let setAngle = angledBorder;
 
-      if ($block.classList.contains("edge--top--reverse"))
+      if (jQuery(this).hasClass("edge--top--reverse"))
         setAngle = -1 * angledBorder;
 
-      $before.style.transform = 'skewY(' + setAngle + 'deg)';
+      $before.css('transform', 'skewY(' + setAngle + 'deg)');
     }
+  })
+
+  // if we scroll past the logo, we ...
+}
+
+function onFormSuccess(result = {}) {
+  if (result && result.success) {
+    jQuery('.contactform').empty();
+    jQuery('.form__successmessage').addClass('visible');
   }
+}
 
-  // if we scroll past the logo, we
-
+function onFormException(result = {}) {
+  console.error(result);
 }
 
 function setupContactForm() {
-  for (const $input of $$('.form__input')) {
-    const $container = $input.closest('.form__row');
+  // debug fields
+  if (whBase.debug['debug'] === true) {
+    jQuery('#form-name').val('Pietje Puk');
+    jQuery('#form-email').val('overig@nerds.company');
+    jQuery('#form-message').val('Dit is\neen bericht');
+  }
+
+  // setup Parsley
+  const parsleyOptions = { trigger: "change keypress focusout",
+                           successClass: "parsley-success",
+                           classHandler: function (el) {
+                                           return el.$element.closest('.form__input-container');
+                                         },
+                         };
+
+  jQuery('.contactform').parsley(parsleyOptions);
+
+  // submit handler
+  jQuery('.contactform').submit(function(evt) {
+    evt.preventDefault();
+
+    const formData = { name: jQuery('#form-name').val(),
+                       email: jQuery('#form-email').val(),
+                       message: jQuery('#form-message').val(),
+                     };
+
+    formRpc.submitContactForm(formData)
+           .then(onFormSuccess)
+           .catch(onFormException);
+  });
+
+  // setup animations
+  jQuery('.form__input').each(function() {
+    const $container = jQuery(this).closest('.form__row');
     const activeClass = 'form__row--active';
 
-    $input.onfocus = function() {
-      $container.classList.add(activeClass);
-    };
+    jQuery(this).on('focus', function() {
+      $container.addClass(activeClass);
+    });
 
-    $input.onblur = function() {
-      $container.classList.toggle(activeClass, $input.value !== '');
-    };
+    jQuery(this).on('blur', function() {
+      $container.toggleClass(activeClass, jQuery(this).value !== '');
+    });
 
-    if ($input.value !== '') {
-      $container.classList.add(activeClass);
+    if (jQuery(this).value !== '') {
+      $container.addClass(activeClass);
     }
-  };
+  });
 }
-
-
-// DOM-ready function
-document.addEventListener('DOMContentLoaded', (/* event */) => {
-
-  setupContactForm();
-
-  window.onresize = onResize;
-  onResize();
-
-  document.addEventListener('scroll', onScroll);
-
-  // position hero logo
-  $('.hero__logo').style.top = logoPositionTop + 'px';
-  $('.hero__logo').style.height = logoHeight + 'px';
-});

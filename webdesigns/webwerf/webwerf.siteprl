@@ -18,12 +18,15 @@
   <apply>
     <to type="all" />
 
+    <robots xmlns="http://www.webhare.net/xmlns/consilio" noindex="false" nofollow="false" />
+
     <!-- Setup default webdesign -->
     <webdesign designfolder="."
                witty="templates/webwerf.witty"
                library="lib/webwerf.whlib"
                objectname="webwerfDesign"
                basedependency="js/webwerf.es"
+               wittyencoding="HTML-NI"
                maxcontentwidth="960px">
     </webdesign>
 
@@ -47,10 +50,7 @@
     <!-- disable keywords field -->
     <baseproperties keywords="false" />
 
-    <!-- property 'name' on 'account' -->
-    <!--
-    <analytics xmlns="http://www.webhare.net/xmlns/socialite" type="universal" code="UA-XXXXXXX-X" />
-    -->
+    <analytics xmlns="http://www.webhare.net/xmlns/socialite" type="universal" code="UA-82261300-1" />
 
     <!-- in this site a Word document is not a publishable type, so treat it as downloadable -->
     <uploadtypemapping filenamemask="*.doc*" filetype="http://www.webhare.net/xmlns/publisher/msworddownload" mimetypemask="application/msword" />

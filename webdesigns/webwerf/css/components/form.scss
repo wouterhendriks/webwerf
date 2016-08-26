@@ -2,16 +2,58 @@ $inputFontSize: 17px;
 
 .form {
   text-align: left;
-  margin-top: 15px;
 
   &__row {
     display: block;
     position: relative;
-    height: 110px;
-    //margin: 1em;
-    //max-width: 350px;
-    //width: calc(100% - 2em);
-    //vertical-align: top;
+  }
+
+  &__input-container {
+    height: 55px;
+    background: #fff;
+    border: 1px solid #fff;
+    position: relative;
+    margin: 0 0 15px 0;
+    overflow: hidden;
+
+    &.parsley-error,
+    &.parsley-success {
+      &::after {
+        opacity: 0;
+        transition: opacity .2s;
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        font-family: FontAwesome;
+        font-size: 15px;
+      }
+    }
+
+    &.parsley-error {
+      border-color: $flag-red;
+
+      .form__label {
+        color: $flag-red;
+      }
+
+      &::after {
+        content: '\f071';
+        color: $flag-red;
+      }
+    }
+
+    &.parsley-success {
+      border-color: $flag-green;
+
+      .form__label {
+        color: $flag-green;
+      }
+
+      &::after {
+        content: '\f00c';
+        color: $flag-green;
+      }
+    }
   }
 
   &__input {
@@ -27,35 +69,22 @@ $inputFontSize: 17px;
     color: #7f8994;
     font-size: rem($inputFontSize);
     outline: none;
+    resize: none;
   }
 
   &__input--textarea {
     height: 150px;
     padding-top: 10px;
     padding-bottom: 10px;
-  }
-
-  &__input-container {
-    width: 400px;
-    height: 50px;
-    background: #fff;
-    position: absolute;
-    bottom: 0;
-  }
-
-  &__row--textarea &__input-container {
-    overflow: hidden;
-    bottom: auto;
-    margin-top: 60px;
+    line-height: 120%;
   }
 
   &__label {
     position: absolute;
-    top: 12px;
+    top: 18px;
     left: 14px;
     text-align: left;
     color: #6a7989;
-    font-weight: bold;
     font-size: rem($inputFontSize);
   }
 
@@ -74,11 +103,28 @@ $inputFontSize: 17px;
     transition: all .3s;
   }
 
+  &__successmessage {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  &__row--submit {
+    text-align: right;
+  }
+
   &__row--active {
     .form__input-container {
-      //transform: scale3d(1, 1.5, 1);
       height: 95px;
-      //top: -20px;
+
+      &.parsley-error,
+      &.parsley-success {
+        &::after {
+          opacity: 1;
+        }
+      }
     }
 
     .form__input {
@@ -88,20 +134,14 @@ $inputFontSize: 17px;
 
     .form__label {
       font-size: rem(15px);
-      left: 15px;
-      top: 12px;
+      left: 11px;
+      top: 10px;
     }
   }
 
   &__row--active.form__row--textarea {
-
-    .form__input--textarea {
-    //  display: none;
-      top: 40px;
-    }
-
     .form__input-container {
-      height: 196px;
+      height: 200px;
     }
   }
 }

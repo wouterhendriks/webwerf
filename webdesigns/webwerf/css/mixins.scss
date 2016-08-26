@@ -1,7 +1,47 @@
-
 @function rem($size) {
-  $rem-size: $size / 16px;
+  $rem-size: $size / $font-size;
   @return #{$rem-size}rem;
+}
+
+// write Pure grid's breakpoints as mixins
+@mixin sm {
+  @media (max-width: 35.5em) { // 568px
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 48em) { // 768px
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: 64em) { // 1024px
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: 80em) { // 1280px
+    @content;
+  }
+}
+
+@mixin xl-min {
+  @media (min-width: 80em) { // 1280px
+    @content;
+  }
+}
+
+@mixin absCenter($horizontal, $vertical) {
+  position: absolute;
+
+  @if ($horizontal == true and $vertical == true) {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
 @mixin angle($pseudo, $flip: false, $angle: 5.5deg) {

@@ -1,38 +1,58 @@
 // general settings
 
 // African flag colors, https://www.pantone.com/pages/MYP_mypantone/mypPaletteDetail.aspx?p_id=82&p_type=p_detail
-$green:  rgb(0, 122, 77);
-$black:  rgb(30, 30, 30);
-$yellow: rgb(255, 182, 18);
-$red:    rgb(222, 56, 49);
-$blue:   rgb(0, 35, 149);
+$flag-green:  rgb(0, 122, 77);
+$flag-black:  rgb(30, 30, 30);
+$flag-yellow: rgb(255, 182, 18);
+$flag-red:    rgb(222, 56, 49);
+$flag-blue:   rgb(0, 35, 149);
+
+$font-size: 15px;
 
 @import 'mixins';
 @import 'edge';
 @import 'fonts';
 @import 'stylereset';
 
+@import "../bower_components/pure/pure-min.css";
+@import "../bower_components/pure/grids-responsive-min.css";
+
+@import 'components/button';
+@import 'components/contact';
 @import 'components/form';
 @import 'components/hero';
 @import 'components/infoblock';
+@import 'components/portfolio';
 @import 'components/siteheader';
 
-body, html { margin: 0; padding: 0; }
+//@media screen and (min-width: 48em)
 
-body {
-  background-image: linear-gradient(to top, rgba(0,122,77, .1), rgba(0,122,77, .1)), url('../web/img/header-work.jpg');
-  background-size: auto, cover;
-  background-attachment: fixed, fixed;
-  background-position: center, center;
-}
+//linear-gradient(to top, rgba(0, 122, 77, 0.3), rgba(0, 122, 77, 0.6))
 
 html {
-  font-size: 16px;
+  font-size: $font-size;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
+  line-height: 150%;
+  overflow-x: hidden;
+
+  background-image: linear-gradient(to top, rgba($flag-green, .6), rgba($flag-green, .6)), url('../web/img/header-work.jpg');
+  background-size: auto, cover;
+  background-attachment: fixed, fixed;
+  background-position: center, center;
+
+  @include md {
+    background-image: linear-gradient(to top, rgba($flag-green, .3), rgba($flag-green, .6))
+  }
+}
+
+button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+  font-size: 1rem;
+  font-family: 'Open Sans', Tahoma, sans-serif;
 }
 
 h1 {
@@ -41,21 +61,24 @@ h1 {
 }
 
 p {
-  font-size: 14px;
-  font-weight: 300;
-  margin-top: 0.5em;
+  margin: 5px 0 15px 0;
 }
 
 hr {
   margin: 40px 0;
 }
 
+ul, ol {
+  padding-left: 1em;
+  margin: 5px 0 15px 0;
+}
+
 .web {
-  color: $blue;
+  color: $flag-blue;
 }
 
 .werf {
-  color: $blue;
+  color: $flag-blue;
   display: inline-block;
   margin-left: .6px;
 }
@@ -66,11 +89,11 @@ hr {
   height: 30px;
   margin: 0 10px 0 0;
 
-  &.green { background: $green; }
-  &.black { background: $black; }
-  &.yellow { background: $yellow; }
-  &.red { background: $red; }
-  &.blue { background: $blue; }
+  &.green { background: $flag-green; }
+  &.black { background: $flag-black; }
+  &.yellow { background: $flag-yellow; }
+  &.red { background: $flag-red; }
+  &.blue { background: $flag-blue; }
 }
 
 .web, .werf {
@@ -89,51 +112,78 @@ hr {
   &.logo-10 {
     font-size: 10px;
     text-shadow: 1px 1px 1px rgba(0,122,77,0.45);
-    border-top: 1px solid lighten($blue, 10);
-    border-bottom: 1px solid lighten($blue, 10);
+    border-top: 1px solid lighten($flag-blue, 10);
+    border-bottom: 1px solid lighten($flag-blue, 10);
   }
 
   &.logo-20 {
     font-size: 20px;
     text-shadow: 1px 1px 1px rgba(0,122,77,0.45);
-    border-top: 1px solid lighten($blue, 10);
-    border-bottom: 1px solid lighten($blue, 10);
+    border-top: 1px solid lighten($flag-blue, 10);
+    border-bottom: 1px solid lighten($flag-blue, 10);
   }
 
   &.logo-30 {
     font-size: 30px;
     text-shadow: 1px 1px 1px rgba(0,122,77,0.45);
-    border-top: 2px solid lighten($blue, 10);
-    border-bottom: 2px solid lighten($blue, 10);
+    border-top: 2px solid lighten($flag-blue, 10);
+    border-bottom: 2px solid lighten($flag-blue, 10);
   }
 
   &.logo-60 {
     font-size: 60px;
     text-shadow: 2px 2px 2px rgba(0,122,77,0.45);
-    border-top: 4px solid lighten($blue, 10);
-    border-bottom: 4px solid lighten($blue, 10);
+    border-top: 4px solid lighten($flag-blue, 10);
+    border-bottom: 4px solid lighten($flag-blue, 10);
   }
 
   &.logo-90 {
     font-size: 90px;
     text-shadow: 3px 3px 3px rgba(0,122,77,0.45);
-    border-top: 6px solid lighten($blue, 10);
-    border-bottom: 6px solid lighten($blue, 10);
+    border-top: 6px solid lighten($flag-blue, 10);
+    border-bottom: 6px solid lighten($flag-blue, 10);
   }
 
   &.logo-120 {
     font-size: 120px;
     text-shadow: 4px 4px 4px rgba(0,122,77,0.45);
-    border-top: 8px solid lighten($blue, 10);
-    border-bottom: 8px solid lighten($blue, 10);
+    border-top: 8px solid lighten($flag-blue, 10);
+    border-bottom: 8px solid lighten($flag-blue, 10);
   }
 
   &.logo-150 {
     font-size: 150px;
     text-shadow: 5px 5px 5px rgba(0,122,77,0.45);
-    border-top: 10px solid lighten($blue, 10);
-    border-bottom: 10px solid lighten($blue, 10);
+    border-top: 10px solid lighten($flag-blue, 10);
+    border-bottom: 10px solid lighten($flag-blue, 10);
   }
 }
 
+.parsley-errors-list {
+  display: none;
+}
+
+
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  z-index: 9999999;
+  background: white;
+  overflow: hidden;
+}
+
+.popup-container--transition-enabled {
+  transition: all 3s;
+}
+
+.popup-container--active {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
 
