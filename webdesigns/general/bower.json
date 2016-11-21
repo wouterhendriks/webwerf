@@ -12,6 +12,7 @@
     "tests"
   ],
   "dependencies": {
-    "pure": "^0.6.0"
+    "pure": "^0.6.0",
+    "list.js": "^1.3.0"
   }
 }
