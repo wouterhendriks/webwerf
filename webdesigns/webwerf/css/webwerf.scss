@@ -1,14 +1,5 @@
 // general settings
-
-// African flag colors, https://www.pantone.com/pages/MYP_mypantone/mypPaletteDetail.aspx?p_id=82&p_type=p_detail
-$flag-green:  rgb(0, 122, 77);
-$flag-black:  rgb(30, 30, 30);
-$flag-yellow: rgb(255, 182, 18);
-$flag-red:    rgb(222, 56, 49);
-$flag-blue:   rgb(0, 35, 149);
-
-$font-size: 15px;
-
+@import 'variables';
 @import 'mixins';
 @import 'edge';
 @import 'fonts';
@@ -38,15 +29,6 @@ body {
   font-size: 1rem;
   line-height: 150%;
   overflow-x: hidden;
-
-  background-image: linear-gradient(to top, rgba($flag-green, .6), rgba($flag-green, .6)), url('../web/img/header-work.jpg');
-  background-size: auto, cover;
-  background-attachment: fixed, fixed;
-  background-position: center, center;
-
-  @include md {
-    background-image: linear-gradient(to top, rgba($flag-green, .3), rgba($flag-green, .6))
-  }
 }
 
 button, input, select, textarea,

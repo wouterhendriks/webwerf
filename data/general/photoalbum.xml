@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<siteprofile xmlns="http://www.webhare.net/xmlns/publisher/siteprofile">
+
+  <foldertype typedef="http://www.webwerf.nl/general/foldertype/photoalbum"
+              title="Fotoalbum"
+              tolliumicon="tollium:folders/photoalbum"
+              indexfile="contentlisting"
+              protectindexfile="true"
+              />
+
+  <contenttype namespace="http://www.webwerf.nl/general/foldertype/photoalbum">
+  </contenttype>
+
+  <apply>
+    <to type="all" parenttype="http://www.webwerf.nl/general/foldertype/photoalbum" />
+    <denyfiletype typedef="*" />
+    <denyfoldertype typedef="*" />
+    <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/imagefile" />
+  </apply>
+
+  <apply>
+    <to type="index" parenttype="http://www.webwerf.nl/general/foldertype/photoalbum" />
+    <bodyrenderer library="moduleroot::webwerf/webdesigns/general/photoalbum/photoalbum.whlib" objectname="photoalbumpage" />
+  </apply>
+
+  <apply>
+    <to type="all" />
+
+    <!-- Replace default photoalbum with our own -->
+    <denyfoldertype typedef="http://www.webhare.net/xmlns/publisher/photoalbum" />
+    <allowfoldertype typedef="http://www.webwerf.nl/general/foldertype/photoalbum" />
+  </apply>
+
+</siteprofile>

@@ -1,0 +1,57 @@
+<?wh
+LOADLIB "wh::datetime.whlib";
+LOADLIB "wh::witty.whlib";
+LOADLIB "module::publisher/webdesign.whlib";
+LOADLIB "module::system/webserver.whlib";
+LOADLIB "module::wrd/objectapi.whlib";
+
+PUBLIC OBJECTTYPE InvoicesPage EXTEND DynamicPageBase
+<
+  UPDATE PUBLIC MACRO PrepareForRendering(OBJECT webdesign)
+  {
+
+  }
+
+  UPDATE PUBLIC MACRO RunBody(OBJECT webdesign)
+  {
+    OBJECT wrdschema := OpenWRDSchemaByName("Stoer Voer");
+    OBJECT wrdinvoicetype := wrdschema->GetTypeByTag("INVOICE");
+
+    RECORD ARRAY invoices :=
+        SELECT invoice_number
+             , invoice_date := FormatDateTime("%d-%m-%Y", invoice_date)
+             , reference
+             , total_price_excl_tax
+             , total_price_incl_tax
+             , due_date
+             , state
+             , invoice_date_original := invoice_date
+          FROM wrdinvoicetype->RunQuery([ outputcolumns := ["*"] ])
+      ORDER BY invoice_date = DEFAULT DATETIME, invoice_date, created_at DESC;
+
+    RECORD ARRAY grouped_by_month :=
+        SELECT *
+             , invoice_date_month := UnpackDateTime(invoice_date_original).year * 12 + UnpackDateTime(invoice_date_original).month
+          FROM invoices
+         WHERE invoice_date_original != DEFAULT DATETIME;
+
+    grouped_by_month :=
+        SELECT month := FormatDateTime("%B %Y", MakeDate(invoice_date_month / 12, invoice_date_month % 12, 1), "nl")
+             , total_excl_tax := SUM(total_price_excl_tax)
+             , income := 0.6 * SUM(total_price_excl_tax)
+          FROM grouped_by_month
+      GROUP BY invoice_date_month
+      ORDER BY invoice_date_month;
+
+    RECORD total := [ excl_tax := (SELECT AS MONEY SUM(total_price_excl_tax) FROM invoices)
+                    , incl_tax := (SELECT AS MONEY SUM(total_price_incl_tax) FROM invoices)
+                    ];
+
+    RECORD data := [ invoices := AnyToString(invoices,'boxed')
+                   , total := AnyToString(total,'boxed')
+                   , grouped := AnyToString(grouped_by_month,'boxed')
+                   ];
+
+    EmbedWittyComponent(this->pagefolder || "invoices.witty:invoices", data);
+  }
+>;

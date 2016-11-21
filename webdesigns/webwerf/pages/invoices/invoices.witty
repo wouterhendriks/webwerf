@@ -1,0 +1,19 @@
+[component invoices]
+  <style>
+    body {
+      background: none;
+    }
+  </style>
+
+  <pre>
+    [total:none]
+  </pre>
+
+  <pre>
+    [grouped:none]
+  </pre>
+
+  <pre>
+    [invoices:none]
+  </pre>
+[/component]

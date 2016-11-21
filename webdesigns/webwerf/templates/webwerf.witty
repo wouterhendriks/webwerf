@@ -3,201 +3,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script type="text/javascript" src="[designroot]js/custombox.min.js"></script>
   <link rel="stylesheet" href="[designroot]css/custombox.min.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="[designroot]favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="[designroot]favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="[designroot]favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="[designroot]favicon/manifest.json">
+<link rel="mask-icon" href="[designroot]favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
 [/component]
 
 [component htmlbody]
-
-<div class="popup-container">
-  <h1>heading 1</h1>
-  <p>Hoi</p>
-</div>
+<img class="hero__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
 
 <section>
   <header class="siteheader">
+    <img class="siteheader__small-logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
     <div class="siteheader__homelink">
-      <img class="siteheader__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
     </div>
-    <nav class="siteheader__nav">
-      <ul class="siteheader__list">
-        <li class="siteheader__listitem">
-          <a href="" class="siteheader__itemlink">Start</a>
-        </li>
-        <li class="siteheader__listitem">
-          <a href="" class="siteheader__itemlink">Over webwerf</a>
-        </li>
-        <li class="siteheader__listitem">
-          <a href="" class="siteheader__itemlink">Contact</a>
-        </li>
-      </ul>
-    </nav>
+
+    [if not islive]
+      <nav class="siteheader__nav">
+        <ul class="siteheader__list">
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Start</a>
+          </li>
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Over webwerf</a>
+          </li>
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    [/if]
   </header>
 </section>
 
 <section class="edge--bottom hero">
   <span class="before"></span>
-  <img class="hero__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
   <span class="after"></span>
 </section>
 
-<section class="infoblock edge--top--reverse infoblock--2">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <h1>Webwerf</h1>
-    <p>Met ruim [years_xp] jaar ervaring in alles wat met het web te maken heeft weet je zeker dat je met Webwerf een betrouwbare partner hebt voor de ontwikkeling van je website.</p>
-    <p>Van begin tot eind kun je de bouw en oplevering van je website gerust aan ons overlaten, inclusief domeinnaam en hosting. Wij staan voor razendsnel ladende websites die stabiel én veilig blijven draaien onder alle omstandigheden.</p>
-    <p>Ook o.a. web-applicaties, intranetten en e-mailcampagnes behoren tot de mogelijkheden.</p>
-    [if not islive]<p>We maken gebruik van het CMS-platform WebHare. Hiermee is véél meer mogelijk dan met een gebruikelijk CMS.[if not islive] <a href="" class="js-popup js-popup-webhare">Nieuwsgierig waarom?</a>[/if]</p>[/if]
-  </div>
-  <span class="after"></span>
-</section>
-
-<section class="infoblock edge--top infoblock--3">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <h1>Ervaring</h1>
-    <p>Webwerf heeft in de afgelopen jaren ruime ervaring opgebouwd met websites rondom grote (prijswinnende) reclamecampagnes, maar ook met kleinere websites, sommigen zelfs binnen een dag opgeleverd. Dankzij dit brede spectrum is geen project te klein of te groot.</p>
-    <p>Tevens beschikken wij over kennis van Google Analytics, Social Media en User Interface.</p>
-  </div>
-  <span class="after"></span>
-</section>
-
-[!<iframe width="1900" height="768" src="http://kulturhus.sites.nerdsandcompany.nl/" style="transform:scale(0.5);transform-origin: top left;"></iframe>!]
-<section class="infoblock edge--top--reverse infoblock--4">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <h1>Portfolio</h1>
-    <p>Een kleine greep uit de door ons ontwikkelde websites:</p>
-    <div class="pure-g">
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.mrprezident.com" target="_blank"><img class="pure-img" src="[imgroot]portfolio/mr-prezident.jpg" alt="Mr.Prezident" /></a></div>
-        <div class="portfolio__title">
-          Mr.Prezident
-        </div>
-      </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.golfclubweleveld.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/golfclub-weleveld.jpg" alt="Golfclub Weleveld" /></a></div>
-        <div class="portfolio__title">
-          Golfclub Weleveld
-        </div>
-      </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.xo-foodgroup.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/xo-food-group.jpg" alt="XO Food Group" /></a></div>
-        <div class="portfolio__title">
-          XO Food Group
-        </div>
-      </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.privateleasealmelo.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/private-lease-almelo.jpg" alt="Private Lease Almelo" /></a></div>
-        <div class="portfolio__title">
-          Private Lease Almelo
-        </div>
-      </div>
-    </div>
-    <p class="portfolio__disclaimer">(bovenstaande sites zijn ontwikkeld in samenwerking met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</p>
-  </div>
-  <span class="after"></span>
-</section>
-
-<section class="infoblock edge--top infoblock--2 infoblock--last-before-contact">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <h1>Overige diensten</h1>
-    <p>Een greep uit de overige mogelijkheden waarmee Webwerf je van dienst kan zijn:
-    <ul>
-      <li>domeinnaambeheer</li>
-      <li>backend bouwen voor frontend/app/narrowcasting</li>
-      <li>(HTML5) banners</li>
-      <li>consultancy, bijv. bij inkoop ICT</li>
-    </ul>
-    <p>Webwerf staat altijd open voor samenwerkingen met designers en reclamebureaus, waarbij wij de techniek (zowel front- als backend) op ons kunnen nemen.</p>
-  </div>
-  <span class="after"></span>
-</section>
-
-<section class="infoblock edge--top--reverse infoblock--3">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <div class="infoblock__intro">
-      <h1>Contact</h1>
-      <p>Contact opnemen met Webwerf?</p>
-      <p>Vul dan onderstaand formulier in en we reageren zo snel mogelijk.</p>
-    </div>
-    <div class="pure-g">
-      <div class="pure-u-1-1 pure-u-sm-14-24 infoblock__col">
-        <p class="form__successmessage">
-          Het formulier is succesvol verstuurd, bedankt!
-        </p>
-        <form class="form contactform">
-          <div class="form__row">
-            <div class="form__input-container">
-              <input class="form__input" type="text" id="form-name" required />
-              <label class="form__label" for="form-name">Naam</label>
-            </div>
-          </div>
-          <div class="form__row">
-            <div class="form__input-container">
-              <input class="form__input" type="email" id="form-email" required />
-              <label class="form__label" for="form-email">E-mailadres</label>
-            </div>
-          </div>
-          <div class="form__row form__row--textarea">
-            <div class="form__input-container">
-              <textarea class="form__input form__input--textarea" id="form-message" required></textarea>
-              <label class="form__label" for="form-message">Bericht</label>
-            </div>
-          </div>
-          <div class="form__row form__row--submit">
-            <button type="submit" class="button">Verzenden</button>
-          </div>
-        </form>
-      </div>
-      <div class="pure-u-1-1 pure-u-sm-10-24 infoblock__col infoblock__col--right">
-        <div class="contact">
-          <div class="contact__row">
-            <div class="contact__icon-c">
-              <a href="[link_addr_postal]" class="fa fa-envelope-o contact__icon contact__icon--link"></a>
-            </div>
-            <div class="contact__value">
-              <h2 class="contact__header">Adres</h2>
-              <a target="_blank" href="[link_addr_postal]">Ridderspoor 14</a><br />
-              <a target="_blank" href="[link_addr_postal]">7483 AW Haaksbergen</a>
-            </div>
-          </div>
-          <div class="contact__row">
-            <div class="contact__icon-c">
-              <a href="mailto:info@webwerf.nl" class="fa fa-at contact__icon contact__icon--link"></a>
-            </div>
-            <div class="contact__value">
-              <h2 class="contact__header">E-mailadres</h2>
-              <a href="mailto:info@webwerf.nl">info@webwerf.nl</a>
-            </div>
-          </div>
-          <div class="contact__row">
-            <div class="contact__icon-c">
-              <a href="tel:+31630415725" class="fa fa-phone contact__icon contact__icon--link"></a>
-            </div>
-            <div class="contact__value">
-              <h2 class="contact__header">Telefoonnummer</h2>
-              <a href="tel:+31630415725">06-30415725</a>
-            </div>
-          </div>
-          <div class="contact__row">
-            <div class="contact__icon-c">
-              <span class="fa fa-building-o contact__icon"></span>
-            </div>
-            <div class="contact__value">
-              <h2 class="contact__header">Bedrijfsgegevens</h2>
-              KVK: 60659297<br />
-              BTW: NL107301167B01<br />
-              IBAN: NL21RABO0126294259
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span class="after"></span>
-</section>
+[contents]
 
 [/component]
 
@@ -216,7 +64,7 @@
      \_/\_/ \___|_.__/ \_/\_/ \___|_|  |_|
   ------------------------------------------
 
-  http://www.webwerf.nl (info@webwerf.nl)
+  http://www.webwerf.nl/ (info@webwerf.nl)
 
   -->
 [/rawcomponent]

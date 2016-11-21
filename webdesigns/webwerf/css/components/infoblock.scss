@@ -4,10 +4,42 @@ $bgcolor: #45558d;
   position: relative;
   color: #fff;
   margin: 0;
-  padding: 50px 20px 150px 20px;
+  padding: 50px 20px 150px;
 
   &--last-before-contact {
     padding-bottom: 100px;
+  }
+
+  &--first .before {
+    transition: transform .8s ease .2s;
+    transform: skewY(0deg);
+
+    &.enabled {
+      transform: skewY(-5.5deg);
+    }
+  }
+
+  &--first .infoblock__content {
+    transition: opacity .7s, transform .9s;
+    transition-delay: .3s;
+    opacity: 0;
+    transform: translateY(140px);
+
+    &.enabled {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &:not(.infoblock--first) .infoblock__content {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1s, transform 1s;;
+
+    &.enabled {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   &:last-of-type {

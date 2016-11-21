@@ -1,0 +1,9 @@
+<div class="webwerf-general-photoalbum pure-g">
+  [forevery photos]
+    <div class="pure-u-1-1 pure-u-sm-8-24 pure-u-md-6-24 pure-u-lg-6-24">
+        <a class="webwerf-general-photoalbum__link" href="[image.link]">
+          <img class="webwerf-general-photoalbum__thumb pure-img" src="[thumb.link]" alt="[title]" width="[thumb.width]" height="[thumb.height]" />
+        </a>
+    </div>
+  [/forevery]
+</div>

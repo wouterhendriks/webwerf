@@ -18,6 +18,7 @@ var verge = require('../node_modules/verge/verge.min.js');
 import { throttle } from './utilities.es';
 
 import * as dompack from '../bower_components/dompack/src/index';
+import { qS, qSA } from 'dompack/extra/qsa';
 
 const logoPositionTop = 120;
 const logoHeight = 48;
@@ -55,8 +56,8 @@ document.addEventListener('DOMContentLoaded', (/* event */) => {
 
 function updateSiteHeaderVisibility() {
   // show site header if top logo is no longer visible
-  const showSiteHeader = !verge.inY(jQuery('.hero__logo'));
-  jQuery('html').toggleClass('siteheader-visible', showSiteHeader);
+  //const showSiteHeader = !verge.inY(jQuery('.hero__logo'));
+  //jQuery('html').toggleClass('siteheader-visible', showSiteHeader);
 }
 
 function onResize() {
@@ -82,32 +83,18 @@ function getScrollPosition() {
 function onScroll() {
   const scrollPos = getScrollPosition();
 
-  jQuery('.infoblock').each(function() {
-    const $before = jQuery(this).find('.before');
-    const elOffsetTop = parseInt(jQuery(this).attr('data-offset-top'), 10);
-    const borderOffsetTop = parseInt($before.attr('data-border-offset-top'), 10);
-
-    if (scrollPos >= borderOffsetTop && scrollPos <= elOffsetTop) {
-      const howFarAlong = scrollPos - borderOffsetTop;
-      const percDone = howFarAlong / (elOffsetTop - borderOffsetTop);
-      let setAngle = (1 - percDone) * angledBorder;
-
-      if (jQuery(this).hasClass("edge--top--reverse"))
-        setAngle = -1 * setAngle;
-
-      $before.css('transform', 'skewY(' + setAngle + 'deg)');
-    } else if (scrollPos < borderOffsetTop) {
-
-      let setAngle = angledBorder;
-
-      if (jQuery(this).hasClass("edge--top--reverse"))
-        setAngle = -1 * angledBorder;
-
-      $before.css('transform', 'skewY(' + setAngle + 'deg)');
+  qSA('.infoblock:not(.infoblock--first) .infoblock__content').forEach((block) => {
+    if (verge.inY(block, -100)) {
+      block.classList.add('enabled');
     }
-  })
+  });
 
-  // if we scroll past the logo, we ...
+  // calculate site header opacity
+  const scrollPosFullOpacity = 100;
+  const relScrollPos = Math.min(scrollPos, scrollPosFullOpacity);
+  qS('.siteheader').style.opacity = (relScrollPos / scrollPosFullOpacity);
+
+  document.documentElement.classList.toggle('small-siteheader', scrollPos > 200);
 }
 
 function onFormSuccess(result = {}) {

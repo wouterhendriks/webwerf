@@ -9,7 +9,7 @@ PUBLIC RECORD FUNCTION SubmitContactForm(RECORD formfields)
 {
   GetPrimary()->BeginWork();
 
-  OBJECT dumpapi := OpenAdhocDump("sigmax_security_event:form");
+  OBJECT dumpapi := OpenAdhocDump("webwerf:contactform");
   dumpapi->DirectDump(GetClientRemoteIP(), formfields);
 
   RECORD ARRAY fields :=

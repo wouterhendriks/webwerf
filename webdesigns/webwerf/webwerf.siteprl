@@ -18,8 +18,6 @@
   <apply>
     <to type="all" />
 
-    <robots xmlns="http://www.webhare.net/xmlns/consilio" noindex="false" nofollow="false" />
-
     <!-- Setup default webdesign -->
     <webdesign designfolder="."
                witty="templates/webwerf.witty"
@@ -63,6 +61,8 @@
     <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/internallink" />
     <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
 
+    <prebuiltpage tag="invoices" type="dynamic" library="pages/invoices/invoices.whlib" webpageobjectname="InvoicesPage" />
+
   </apply>
 
   <!-- ***********************************************************************
@@ -70,9 +70,8 @@
        Homepage
 
   *********************************************************************** -->
-  <!-- FIXME: Update namespace URL!
-  <contenttype namespace="http://www.example.com/xmlns/filetype/home"></contenttype>
-  <filetype typedef="http://www.example.com/xmlns/filetype/home"
+  <contenttype namespace="http://www.webwerf.nl/filetype/home"></contenttype>
+  <filetype typedef="http://www.webwerf.nl/filetype/home"
             title="Homepage"
             blobiscontent="false"
             ispublishable="true"
@@ -83,10 +82,9 @@
             />
 
   <apply>
-    <to type="file" filetype="http://www.example.com/xmlns/filetype/home" />
+    <to type="file" filetype="http://www.webwerf.nl/filetype/home" />
     <bodyrenderer library="pages/home/home.whlib" objectname="homepage" />
     <setobjecteditor name="publisher:propertydialog" />
   </apply>
-  -->
 
 </siteprofile>

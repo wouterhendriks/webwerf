@@ -2,20 +2,34 @@ $transition-duration: .2s;
 
 .siteheader {
   justify-content: space-between;
-  max-width: 1200px;
-  height: 100px;
+  height: 90px;
   margin: 0 auto;
   padding: 0;
-  background: rgba(0,0,0,.7);
+  background: rgba(255, 255, 255, .95);
   position: fixed;
-  top: -100%;
+  top: 0;
   left: 0;
   right: 0;
-  transition: all .3s;
   z-index: 10;
+  opacity: 0;
+  transition: height .4s;
 
-  html.siteheader-visible & {
-    top: 0;
+  html.small-siteheader & {
+    height: 50px;
+  }
+
+  &__small-logo {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    width: auto;
+    height: 24px;
+    transition: transform .4s;
+    transform: translateX(-150px);
+
+    html.small-siteheader & {
+      transform: translateX(0);
+    }
   }
 
   &,
@@ -70,6 +84,9 @@ $transition-duration: .2s;
     //position: relative;
     //top: 9px;
     //width: 96px;
+    width: auto;
+    height: 48px;
+    display: none;
   }
 
   &__mobile-menu-button {

@@ -10,6 +10,14 @@
     }
   }
 
+  a.contact__obvious-link {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   &__row {
     margin: 0 0 25px 0;
   }

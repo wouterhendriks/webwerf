@@ -1,0 +1,49 @@
+<?wh
+LOADLIB "wh::witty.whlib";
+LOADLIB "module::publisher/publisher.whlib";
+LOADLIB "module::publisher/webdesign.whlib";
+LOADLIB "module::system/cache.whlib";
+LOADLIB "module::system/database.whlib";
+LOADLIB "module::system/whfs.whlib";
+
+PUBLIC OBJECTTYPE PhotoAlbumPage EXTEND StaticPageBase
+<
+  OBJECT webdesign;
+  RECORD wittydata;
+
+  UPDATE PUBLIC MACRO PrepareForRendering(OBJECT webdesign)
+  {
+    this->webdesign := webdesign;
+
+    INSERT "page-general-webwerf-photoalbum" INTO webdesign->htmlclasses AT END;
+
+    this->wittydata := [ photos := this->GetPhotos() ];
+  }
+
+  RECORD ARRAY FUNCTION GetPhotos()
+  {
+    RECORD ARRAY photos := SELECT id
+                                , title
+                                , image := DEFAULT RECORD
+                                , thumb := DEFAULT RECORD
+                             FROM system.fs_objects AS photo
+                            WHERE parent = this->webdesign->targetfolder->id
+                                  AND type = 12
+                                  AND indexurl != ""
+                         ORDER BY ordering, ToUpperCase(title), id;
+
+    FOREVERY (RECORD photo FROM photos)
+    {
+      OBJECT whfsobj := OpenWHFSObject(photo.id);
+      photos[#photo].image := WrapCachedImage(whfsobj->GetWrapped(), [ method := "fit", setwidth := 1920, format := "image/jpeg" ]); // never bigger than 1920 wide
+      photos[#photo].thumb := WrapCachedImage(whfsobj->GetWrapped(), [ method := "fill", setwidth := 500, setheight := 500, format := "image/jpeg" ]);
+    }
+
+    RETURN photos;
+  }
+
+  UPDATE PUBLIC MACRO RunBody(OBJECT webdesign)
+  {
+    LoadWittyLibrary(this->pagefolder || "photoalbum.witty", "HTML")->Run(this->wittydata);
+  }
+>;
