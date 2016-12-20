@@ -49,6 +49,9 @@ function setPrevNextClick(options, link, isNext) {
 
 // updates state of prev/next links
 function updatePagination(options) {
+  if (!orgList.pagination)
+    return;
+
   const status = orgList.pagination.getPaginationStatus();
 
   qSA('.' + options.classPagePrev).forEach(link => {

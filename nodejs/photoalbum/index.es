@@ -5,7 +5,7 @@ const $ = window.jQuery = require('jquery');
 require('../../webdesigns/general/node_modules/magnific-popup/dist/jquery.magnific-popup.js');
 
 // Swipe support for the popup
-require('../../webdesigns/general/node_modules/jquery-touchswipe/jquery.touchswipe.js');
+require('../../webdesigns/general/node_modules/jquery-touchswipe/jquery.touchSwipe.js');
 
 import * as dompack from "dompack"; // needed for dompack.onDomReady to support async
 

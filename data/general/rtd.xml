@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<siteprofile xmlns="http://www.webhare.net/xmlns/publisher/siteprofile">
+
+  <!-- Own RTD types (no .rtd extension) -->
+  <contenttype namespace="http://www.webwerf.nl/general/filetype/richdocumentfile" cloneoncopy="true" />
+  <filetype typedef="http://www.webwerf.nl/general/filetype/richdocumentfile"
+            tid="publisher:filetypes.richdocumentfile"
+            tolliumicon="tollium:files/application_x-webhare-richdocument"
+            blobiscontent="false"
+            needstemplate="true"
+            needsprofile="false"
+            ispublishable="true"
+            requirescontent="false"
+            isacceptableindex="true"
+            ispublishedassubdir="true"
+            />
+
+  <apply>
+    <to type="file" filetype="http://www.webwerf.nl/general/filetype/richdocumentfile" />
+    <setobjecteditor name="publisher:editdocument" />
+  </apply>
+
+  <apply>
+    <to type="all" />
+    <denyfiletype typedef="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
+    <allowfiletype typedef="http://www.webwerf.nl/general/filetype/richdocumentfile" />
+  </apply>
+
+</siteprofile>

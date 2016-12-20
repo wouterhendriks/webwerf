@@ -13,7 +13,6 @@
   </adhocdumps>
 
   <publisher>
-    <installsite name="Webwerf" storage="webwerf.zip"/>
     <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl"/>
   </publisher>
 

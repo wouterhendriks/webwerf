@@ -44,6 +44,6 @@ PUBLIC OBJECTTYPE PhotoAlbumPage EXTEND StaticPageBase
 
   UPDATE PUBLIC MACRO RunBody(OBJECT webdesign)
   {
-    LoadWittyLibrary(this->pagefolder || "photoalbum.witty", "HTML")->Run(this->wittydata);
+    LoadWittyLibrary(this->pagefolder || "photoalbum.witty", "HTML-NI")->Run(this->wittydata);
   }
 >;

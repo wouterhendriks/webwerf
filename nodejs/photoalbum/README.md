@@ -1,16 +1,14 @@
-To use this photoalbum:
+# Replace default photo album #
 
-Siteprofile:
-```XML
-<applysiteprofile fullpath="moduleroot::webwerf/data/general/photoalbum.xml" />
-```
-In `<webdesign>`:
+The following will enable a new default photo album folder in your site.
+
+1) Make sure 'async' is enabled in your `<webdesign>`:
 
 ```JS
 async="true"
 ```
 
-In the module webdesign in which you want to use the photo album:
+2) In the module webdesign root folder in which you want to use the photo album:
 
 ```
 npm install jquery --save
@@ -18,17 +16,24 @@ npm install jquery --save
 
 (this is to make sure there will be no jQuery version conflicts, by 'forcing' developers to provide jQuery themselves)
 
-JavaScript:
+3) JavaScript:
 ```JS
 import '@webhare-webwerf/photoalbum';
 ```
-This will enable a new default photo album folder.
 
-If you want complete control, these are the steps, instead of the last JS 'import' directive:
+4) Siteprofile:
+
+```XML
+<applysiteprofile fullpath="moduleroot::webwerf/data/general/photoalbum.xml" />
+```
+
+# Only use the frontend #
+
+To have complete control and basically only use the frontend side of things, you should do the following. Perform steps 1 and 2 first, and then:
 
 JavaScript:
 ```JS
-import * as DomPack from "dompack";
+import * as DomPack from 'dompack';
 import * as PhotoAlbum from '@webhare-webwerf/photoalbum';
 
 DomPack.onDomReady(() => {

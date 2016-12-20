@@ -32,18 +32,8 @@
   <span class="after"></span>
 </section>
 
-<section class="infoblock edge--top infoblock--3">
-  <span class="before"></span>
-  <div class="infoblock__content">
-    <h1>Ervaring</h1>
-    <p>Webwerf heeft in de afgelopen jaren ruime ervaring opgebouwd met websites rondom grote (prijswinnende) reclamecampagnes, maar ook met kleinere websites, sommigen zelfs binnen een dag opgeleverd. Dankzij dit brede spectrum is geen project te klein of te groot.</p>
-    <p>Tevens beschikken wij over kennis van Google Analytics, Social Media en User Interface.</p>
-  </div>
-  <span class="after"></span>
-</section>
-
 [!<iframe width="1900" height="768" src="http://kulturhus.sites.nerdsandcompany.nl/" style="transform:scale(0.5);transform-origin: top left;"></iframe>!]
-<section class="infoblock edge--top--reverse infoblock--4">
+<section class="infoblock edge--top infoblock--3">
   <span class="before"></span>
   <div class="infoblock__content">
     <h1>Portfolio</h1>
@@ -52,29 +42,38 @@
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.mrprezident.com" target="_blank"><img class="pure-img" src="[imgroot]portfolio/mr-prezident.jpg" alt="Mr.Prezident" /></a></div>
         <div class="portfolio__title">
-          Mr.Prezident
+          Mr.Prezident<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
+        </div>
+      </div>
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="http://www.twente-airport.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/twente-airport.jpg" alt="Twente Airport" /></a></div>
+        <div class="portfolio__title">
+          Twente Airport<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
         </div>
       </div>
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.golfclubweleveld.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/golfclub-weleveld.jpg" alt="Golfclub Weleveld" /></a></div>
         <div class="portfolio__title">
-          Golfclub Weleveld
+          Golfclub Weleveld<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
         </div>
       </div>
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.xo-foodgroup.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/xo-food-group.jpg" alt="XO Food Group" /></a></div>
         <div class="portfolio__title">
-          XO Food Group
-        </div>
-      </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.privateleasealmelo.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/private-lease-almelo.jpg" alt="Private Lease Almelo" /></a></div>
-        <div class="portfolio__title">
-          Private Lease Almelo
+          XO Food Group<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
         </div>
       </div>
     </div>
-    <p class="portfolio__disclaimer">(bovenstaande sites zijn ontwikkeld in samenwerking met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</p>
+  </div>
+  <span class="after"></span>
+</section>
+
+<section class="infoblock edge--top edge--top--reverse infoblock--4">
+  <span class="before"></span>
+  <div class="infoblock__content">
+    <h1>Ervaring</h1>
+    <p>Webwerf heeft in de afgelopen jaren ruime ervaring opgebouwd met websites rondom grote (prijswinnende) reclamecampagnes, maar ook met kleinere websites, sommigen zelfs binnen een dag opgeleverd. Dankzij dit brede spectrum is geen project te klein of te groot.</p>
+    <p>Tevens beschikken wij over kennis van Google Analytics, Social Media en User Interface.</p>
   </div>
   <span class="after"></span>
 </section>

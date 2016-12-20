@@ -12,6 +12,15 @@
     margin: 6px 0 15px 0;
   }
 
+  &__builtwith {
+    margin-left: 10px;
+
+    &,
+    a {
+      font-size: rem(11px);
+    }
+  }
+
   @include md {
     &__col:nth-child(odd),
     &__col:nth-child(even) {
