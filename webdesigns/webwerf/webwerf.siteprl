@@ -23,7 +23,7 @@
                witty="templates/webwerf.witty"
                library="lib/webwerf.whlib"
                objectname="webwerfDesign"
-               basedependency="js/webwerf.es"
+               assetpack="webwerf:webwerf"
                wittyencoding="HTML-NI"
                maxcontentwidth="960px">
     </webdesign>

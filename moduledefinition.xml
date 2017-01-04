@@ -13,7 +13,9 @@
   </adhocdumps>
 
   <publisher>
-    <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl"/>
+    <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl">
+      <assetpack entrypoint="webdesigns/webwerf/js/webwerf" supportedlanguages="nl" />
+    </webdesign>
   </publisher>
 
   <services>

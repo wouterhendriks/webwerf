@@ -51,18 +51,34 @@
           Twente Airport<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
         </div>
       </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="http://www.golfclubweleveld.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/golfclub-weleveld.jpg" alt="Golfclub Weleveld" /></a></div>
-        <div class="portfolio__title">
-          Golfclub Weleveld<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
-        </div>
-      </div>
+      <!--
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.xo-foodgroup.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/xo-food-group.jpg" alt="XO Food Group" /></a></div>
         <div class="portfolio__title">
           XO Food Group<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
         </div>
       </div>
+      -->
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="https://www.technologybase.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/technology-base.jpg" alt="Technology Base" /></a></div>
+        <div class="portfolio__title">
+          Technology Base<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
+        </div>
+      </div>
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="http://www.golfclubweleveld.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/golfclub-weleveld.jpg" alt="Golfclub Weleveld" /></a></div>
+        <div class="portfolio__title">
+          Golfclub Weleveld<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
+        </div>
+      </div>
+      <!--
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="http://www.privateleasealmelo.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/private-lease-almelo.jpg" alt="Private Lease Almelo" /></a></div>
+        <div class="portfolio__title">
+          Private Lease Almelo
+        </div>
+      </div>
+      -->
     </div>
   </div>
   <span class="after"></span>

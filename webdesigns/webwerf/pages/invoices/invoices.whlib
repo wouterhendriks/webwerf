@@ -43,8 +43,8 @@ PUBLIC OBJECTTYPE InvoicesPage EXTEND DynamicPageBase
       GROUP BY invoice_date_month
       ORDER BY invoice_date_month;
 
-    RECORD total := [ excl_tax := (SELECT AS MONEY SUM(total_price_excl_tax) FROM invoices)
-                    , incl_tax := (SELECT AS MONEY SUM(total_price_incl_tax) FROM invoices)
+    RECORD total := [ excl_tax := (SELECT AS MONEY SUM(total_price_excl_tax) FROM invoices WHERE invoice_date_original != DEFAULT DATETIME)
+                    , incl_tax := (SELECT AS MONEY SUM(total_price_incl_tax) FROM invoices WHERE invoice_date_original != DEFAULT DATETIME)
                     ];
 
     RECORD data := [ invoices := AnyToString(invoices,'boxed')
