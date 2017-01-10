@@ -21,13 +21,14 @@
 { containerId: 'list', // id of the container
   classPagePrev: 'page-nav-prev', // class name of the 'previous page' link
   classPageNext: 'page-nav-next', // class name of the 'next page' link
-  delayedLoadImages: true, // if true, load images when item is visible; add 'data-src="..."' to your <img /> nodes
+  delayedLoadImages: true, // if true, load images when item is visible; add 'data-src="..."' to your <img /> nodes instead of 'src="..."'
   classImage: 'image', // if delayedLoadImages = true, this is the class name of the <img />
   numPerPage: 3, // number of items per page
+  valueNames: '', // value names (class names) for the different values of each list item, used for searching
 
   // for more info about these options, refer to http://listjs.com/docs/plugins/pagination/
   paginationOptions:
-    { paginationClass: 'nav-pages', // the class that defines the <ul> that should contain the pagination
+    { paginationClass: 'nav-pages', // the class that defines the <ul> that will contain the pagination (prev, next, pages)
       innerWindow: 2, // how many pages should be visible on each side of the current page
       outerWindow: 0, // how many pages should be visible on from the beginning and from the end of the pagination
       left: 0, // same as outerWindow but only from left
@@ -51,7 +52,7 @@ const pageNavigationOptions =
           { paginationClass: 'nav-pages',
             left: 1,
             right: 1,
-           innerWindow: 2,
+            innerWindow: 2,
           },
     };
 

@@ -6,23 +6,25 @@ const ListPagination = require('./list.pagination.js'); // derived from NPM pack
 let orgList = null;
 
 export function setup(options) {
+  // disable 'previous page' link
   qSA('.' + options.classPagePrev).forEach(link => {
     link.classList.add('disabled');
   });
 
-  orgList = new List(options.containerId, {
+  let listOptions = {
     page: options.numPerPage,
     plugins: [ ListPagination(options.paginationOptions),
              ]
-  });
+  }
+
+  if (options.valueNames && options.valueNames.length > 0) {
+    listOptions.valueNames = options.valueNames;
+  }
+
+  orgList = new List(options.containerId, listOptions);
 
   qSA('.' + options.classPagePrev).forEach(link => { setPrevNextClick(options, link, false); });
   qSA('.' + options.classPageNext).forEach(link => { setPrevNextClick(options, link, true); });
-
-  if (options.delayedLoadImages)
-    loadImages(options);
-
-  updatePagination(options);
 
   orgList.on('updated', function() {
     window.setTimeout(() => {
@@ -32,6 +34,13 @@ export function setup(options) {
       updatePagination(options);
     }, 50); // prevents race condition problems
   });
+
+  if (options.delayedLoadImages)
+    loadImages(options);
+
+  updatePagination(options);
+
+  return orgList;
 }
 
 function setPrevNextClick(options, link, isNext) {
