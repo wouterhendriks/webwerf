@@ -76,6 +76,9 @@ function updatePagination(options) {
 function loadImages(options) {
   for (const item of orgList.visibleItems) {
     const logo = item.elm.querySelector('.' + options.classImage);
+    if (!logo)
+      continue;
+
     const src = logo.getAttribute('src');
 
     if (!src || src === '') {
