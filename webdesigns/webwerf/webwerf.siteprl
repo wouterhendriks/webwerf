@@ -5,18 +5,30 @@
              xmlns:p="http://www.webhare.net/xmlns/publisher/components"
              xmlns:w="http://www.webhare.net/xmlns/wrd/components">
 
-  <!-- RTD default settings -->
-  <apply>
-    <to type="file" filetype="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
-    <richdocumenteditor>
-      <structuredefinition fullpath="rtd/rtd-structure.xml" />
-      <css fullpath="css/webwerf.scss" />
-    </richdocumenteditor>
-  </apply>
+
+  <rtdtype namespace="http://www.webwerf.nl/rtd/document">
+    <css path="css/rtd.css" />
+
+    <blockstyles defaultstyle="NORMAL">
+      <textstyle tag="HEADING1" containertag="h1" textstyles="" />
+      <textstyle tag="HEADING2" containertag="h2" textstyles="" />
+      <textstyle tag="HEADING3" containertag="h3" textstyles="" />
+      <textstyle tag="NORMAL" textstyles="b i a-href img sup sub strike" />
+      <textstyle tag="UNORDERED" containertag="ul" textstyles="b i a-href sup sub strike" />
+      <textstyle tag="ORDERED" containertag="ol" textstyles="b i a-href sup sub strike" />
+      <tablestyle tag="TABLE" />
+    </blockstyles>
+    <widgets>
+      <allowtype type="http://www.webhare.net/xmlns/publisher/embedvideo" />
+      <allowtype type="http://www.webhare.net/xmlns/publisher/embedhtml" />
+    </widgets>
+  </rtdtype>
 
   <!-- Global site settings -->
   <apply>
     <to type="all" />
+
+    <rtddoc rtdtype="http://www.webwerf.nl/rtd/document" />
 
     <!-- Setup default webdesign -->
     <webdesign designfolder="."
@@ -86,5 +98,7 @@
     <bodyrenderer library="pages/home/home.whlib" objectname="homepage" />
     <setobjecteditor name="publisher:propertydialog" />
   </apply>
+
+  <applysiteprofile fullpath="pages/content/content.siteprl" />
 
 </siteprofile>

@@ -1,0 +1,69 @@
+html,
+body,
+p,
+ul,
+ol,
+a,
+blockquote,
+button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+  font-size: 16px;
+  line-height: 150%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 43px;
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 40px;
+  margin: 0 0 15px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 25px;
+  margin: 0 0 6px;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+ul {
+  padding-left: 1.3em;
+}
+
+ol {
+  padding-left: 1em;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 16px;
+  font-size: 20px;
+  line-height: 25px;
+  border-left: 1px solid #000;
+}
+
+.wh-video {
+  margin: 10px 0 20px;
+}

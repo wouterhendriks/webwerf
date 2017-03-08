@@ -1,0 +1,25 @@
+<?wh
+LOADLIB "wh::witty.whlib";
+LOADLIB "module::publisher/webdesign.whlib";
+LOADLIB "module::system/cache.whlib";
+LOADLIB "module::system/whfs.whlib";
+
+PUBLIC OBJECTTYPE ContentPage EXTEND StaticPageBase
+<
+  RECORD wittydata;
+
+  UPDATE PUBLIC MACRO PrepareForRendering(OBJECT webdesign)
+  {
+    INSERT "page-content" INTO webdesign->htmlclasses AT END;
+
+    RECORD wittydata := [ rtd := PTR webdesign->OpenRTDFromFile(webdesign->targetobject)->RenderAllObjects()
+                        ];
+
+    this->wittydata := wittydata;
+  }
+
+  UPDATE PUBLIC MACRO RunBody(OBJECT webdesign)
+  {
+    LoadWittyLibrary(this->pagefolder || "content.witty", "HTML-NI")->Run(this->wittydata);
+  }
+>;

@@ -8,10 +8,6 @@
     <packaging download="true"/>
   </meta>
 
-  <adhocdumps>
-    <adhocdump tag="contactform" title="Webwerf contact formulier" />
-  </adhocdumps>
-
   <publisher>
     <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl">
       <assetpack entrypoint="webdesigns/webwerf/js/webwerf" supportedlanguages="nl" />

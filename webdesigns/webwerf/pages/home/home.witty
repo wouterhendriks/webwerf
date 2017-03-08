@@ -1,3 +1,34 @@
+<img class="hero__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
+
+<section>
+  <header class="siteheader">
+    <img class="siteheader__small-logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
+    <div class="siteheader__homelink">
+    </div>
+
+    [if not islive]
+      <nav class="siteheader__nav">
+        <ul class="siteheader__list">
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Start</a>
+          </li>
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Over webwerf</a>
+          </li>
+          <li class="siteheader__listitem">
+            <a href="" class="siteheader__itemlink">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    [/if]
+  </header>
+</section>
+
+<section class="edge--bottom hero">
+  <span class="before"></span>
+  <span class="after"></span>
+</section>
+
 <section class="infoblock edge--top--reverse infoblock--2 infoblock--first">
   <span class="before"></span>
   <div class="infoblock__content">

@@ -4,46 +4,15 @@
   <script type="text/javascript" src="[designroot]js/custombox.min.js"></script>
   <link rel="stylesheet" href="[designroot]css/custombox.min.css" />
 
-
-<link rel="apple-touch-icon" sizes="180x180" href="[designroot]favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="[designroot]favicon/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="[designroot]favicon/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="[designroot]favicon/manifest.json">
-<link rel="mask-icon" href="[designroot]favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="180x180" href="[designroot]favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="[designroot]favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="[designroot]favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="[designroot]favicon/manifest.json">
+  <link rel="mask-icon" href="[designroot]favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
 [/component]
 
 [component htmlbody]
-<img class="hero__logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
-
-<section>
-  <header class="siteheader">
-    <img class="siteheader__small-logo" src="[imgroot]webwerf-logo.png" alt="Webwerf logo" />
-    <div class="siteheader__homelink">
-    </div>
-
-    [if not islive]
-      <nav class="siteheader__nav">
-        <ul class="siteheader__list">
-          <li class="siteheader__listitem">
-            <a href="" class="siteheader__itemlink">Start</a>
-          </li>
-          <li class="siteheader__listitem">
-            <a href="" class="siteheader__itemlink">Over webwerf</a>
-          </li>
-          <li class="siteheader__listitem">
-            <a href="" class="siteheader__itemlink">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    [/if]
-  </header>
-</section>
-
-<section class="edge--bottom hero">
-  <span class="before"></span>
-  <span class="after"></span>
-</section>
 
 [contents]
 

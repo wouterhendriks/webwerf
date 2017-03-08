@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteprofile xmlns="http://www.webhare.net/xmlns/publisher/siteprofile"
+             >
+
+  <apply>
+    <to type="file" filetype="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
+    <bodyrenderer library="content.whlib" objectname="contentpage" />
+  </apply>
+
+</siteprofile>

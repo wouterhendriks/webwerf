@@ -1,6 +1,6 @@
 .hero {
   padding: 0 30vh 0;
-  height: 250px;
+  height: 180px;
   position: relative;
 
   html:not(.page-home) & {
@@ -28,7 +28,7 @@
     z-index: 99999;
 
     &.enabled {
-      top: 50px;
+      top: 27px;
     }
 
     html.small-siteheader & {

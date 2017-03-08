@@ -1,7 +1,7 @@
 @import '../../css/variables';
 @import '../../css/mixins';
 
-body {
+html.page-home body {
   background-image: linear-gradient(to top, rgba(#fff, .7), rgba(#fff, .7)), url('../../web/img/header-work.jpg');
   background-size: auto, cover;
   background-attachment: fixed, fixed;
