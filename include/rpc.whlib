@@ -1,5 +1,5 @@
 <?wh
-LOADLIB "module::system/adhocdump.whlib";
+LOADLIB "module::webwerf_sites/adhocdump.whlib";
 LOADLIB "module::system/database.whlib";
 LOADLIB "module::system/mailer.whlib";
 LOADLIB "module::system/webserver.whlib";

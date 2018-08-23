@@ -4,10 +4,18 @@
   <meta>
     <version>1.0</version>
     <description>Webwerf</description>
-    <author>Wouter Hendriks</author>
+    <author>Webwerf</author>
     <packaging download="true"/>
   </meta>
-
+<!--
+  <portal>
+    <application group="apps" name="crm" screen="crm.main" title="Webwerf CRM" icon="tollium:tollium/tollium">
+      <accesscheck>
+        <requireright right="superuser" />
+      </accesscheck>
+    </application>
+  </portal>
+-->
   <publisher>
     <webdesign name="webwerf" title="Webwerf" siteprofile="webwerf.siteprl">
       <assetpack entrypoint="webdesigns/webwerf/js/webwerf" supportedlanguages="nl" />
@@ -19,5 +27,19 @@
       <accesscheck />
     </webservice>
   </services>
+
+  <rights>
+    <right name="superuser">
+      <impliedby right="system:sysop" />
+    </right>
+  </rights>
+
+  <wrdschemas xmlns="http://www.webhare.net/xmlns/wrd/schemadefinition">
+    <schema name="Webwerf CRM" autocreate="true" definitionfile="wrdschema-crm.xml"/>
+  </wrdschemas>
+
+  <appcontexts>
+    <wrdschema xmlns="http://www.webhare.net/xmlns/wrd/appcontext" name="CRM" schema="Webwerf CRM" />
+  </appcontexts>
 
 </module>

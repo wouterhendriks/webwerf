@@ -1,0 +1,138 @@
+<screens xmlns="http://www.webhare.net/xmlns/tollium/screens"
+         xmlns:wrd="http://www.webhare.net/xmlns/wrd/components"
+         lib="screens/crm.whlib"
+         >
+
+  <messageboxes gid=".messages">
+    <messagebox name="suredelete" icon="question" buttons="yes no" title="Weet u zeker dat u het geselecteerde wilt verwijderen?" />
+  </messageboxes>
+
+  <screen name="main"
+          allowresize="true"
+          menubar="menubar"
+          title="Webwerf CRM"
+          >
+    <actions>
+      <action name="add" onexecute="doadd" tid="tollium:common.actions.add" />
+      <action name="edit" onexecute="doedit" tid="tollium:common.actions.edit">
+        <enableon source="persons" min="1" max="1" />
+      </action>
+      <action name="delete" onexecute="dodelete" tid="tollium:common.actions.delete">
+        <enableon source="persons" min="1" />
+      </action>
+      <action name="exit" onexecute="cancel" tid="tollium:common.actions.exit" />
+    </actions>
+
+    <menus>
+      <menu name="menubar">
+        <item action="add" />
+        <item action="edit" />
+        <item action="delete" />
+        <divider/>
+        <addtostartmenu xmlns="http://www.webhare.net/xmlns/tollium/portal/components"
+                        name="addtostartmenu"
+                        application="crm:main"
+                        tid="tollium:common.actions.addtostartmenu"
+                        />
+        <divider/>
+        <item action="exit" />
+      </menu>
+      <menu name="selection">
+        <item action="edit" disablemode="hidden"/>
+        <item action="delete" disablemode="hidden" />
+      </menu>
+      <menu name="noselection">
+        <item action="add" disablemode="hidden" />
+      </menu>
+    </menus>
+
+    <toolbar name="toolbar">
+      <button action="add" icon="tollium:actions/add" />
+      <button action="edit" icon="tollium:actions/edit" />
+      <button action="delete" icon="tollium:actions/delete" />
+    </toolbar>
+
+    <body>
+      <wrd:entitylist name="persons"
+                      wrdcontext="crm"
+                      wrdtype="wrd_person"
+                      height="1pr"
+                      newcontextmenu="noselection"
+                      selectcontextmenu="selection"
+                      selectmultiple="true"
+                      openaction="edit"
+                      sortcolumn="wrd_fullname"
+                      onmaprows="mappersons"
+                      requestcolumns="wrd_fullname email"
+                      >
+        <column name="wrd_fullname" type="text" title="Naam" />
+        <column name="email" type="text" title="E-mailadres" />
+      </wrd:entitylist>
+    </body>
+  </screen>
+
+  <screen name="updateperson"
+          gid=".updateperson"
+          minwidth="600px"
+          minheight="600px"
+          allowresize="true"
+          title="Bewerk persoon"
+          >
+    <compositions>
+      <wrd:entity name="entity" />
+    </compositions>
+    <body spacers="none">
+      <tabs height="1pr">
+        <tab name="tab_main" title="Algemeen">
+          <heading title="Algemene gegevens" />
+          <textedit composition="entity" cellname="wrd_firstname" required="true" width="1pr" title="Voornaam" />
+          <textedit composition="entity" cellname="wrd_infix" width="15x" title="Tussenvoegsels" />
+          <textedit composition="entity" cellname="wrd_lastname" required="true" width="1pr" title="Achternaam" />
+          <textedit composition="entity" cellname="email" width="1pr" validationchecks="email" title="E-mailadres" />
+          <datetime composition="entity" cellname="dob" type="date" width="1pr" title="Geboortedatum" />
+
+          <heading name="remarks" title="Opmerkingen" />
+          <line layout="left">
+            <textarea composition="entity" cellname="remarks" width="1pr" height="1pr" title="" maxlength="2500" showcounter="true" errorlabeltid=".remarks" />
+          </line>
+        </tab>
+        <tab title="Contactmomenten">
+          <arrayedit name="contactmoments"
+                     height="1pr"
+                     sortascending="false"
+                     roweditscreen=".updatecontactmoment"
+                     onrowedit="contactmomentslisthelper"
+                     >
+            <column name="when" type="datetime" storeutc="true" width="14x" title="Wanneer" />
+            <column name="description" type="text" title="Omschrijving" />
+          </arrayedit>
+        </tab>
+      </tabs>
+    </body>
+    <footer>
+      <defaultformbuttons buttons="ok cancel" />
+    </footer>
+  </screen>
+
+  <screen name="updatecontactmoment"
+          minwidth="700px"
+          minheight="400px"
+          allowresize="true"
+          savestate="size"
+          >
+    <compositions>
+      <record name="row" />
+    </compositions>
+    <body>
+      <heading title="Contactmoment" />
+      <datetime type="datetime" precision="minutes" composition="row" cellname="when" name="when" storeutc="true" title="" />
+
+      <heading title="Omschrijving" />
+      <textarea composition="row" cellname="description" name="description" height="1pr" title="" placeholder="Wat heb je gedaan, wat is er besproken, etc." />
+    </body>
+    <footer>
+      <defaultformbuttons buttons="ok cancel" />
+    </footer>
+  </screen>
+
+</screens>

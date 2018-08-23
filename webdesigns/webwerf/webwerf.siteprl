@@ -49,8 +49,6 @@
     <!-- Allow RTD documents -->
     <allowfiletype typedef="http://www.webhare.net/xmlns/publisher/richdocumentfile" />
 
-    <enabledrafts />
-
     <!-- Disable the legacy site settings -->
     <disablelegacysitesettings notemplateprofile="true" />
 

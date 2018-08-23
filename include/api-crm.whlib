@@ -1,0 +1,38 @@
+<?wh
+LOADLIB "module::wrd/objectapi.whlib";
+
+OBJECT api;
+
+PUBLIC STATIC OBJECTTYPE CRMApi
+< // ---------------------------------------------------------------------------
+  //
+  // Variables
+  //
+
+  PUBLIC OBJECT wrdschema;
+  PUBLIC OBJECT wrdpersontype;
+
+  // ---------------------------------------------------------------------------
+  //
+  // Constructor
+  //
+
+  MACRO NEW()
+  {
+    this->wrdschema := OpenWRDSchemaByName("Pazzie");
+    this->wrdpersontype := this->wrdschema->GetTypeByTag("WRD_PERSON");
+  }
+
+  // ---------------------------------------------------------------------------
+  //
+  // Public API
+  //
+>;
+
+PUBLIC OBJECT FUNCTION GetCRMAPI()
+{
+  IF (NOT ObjectExists(api))
+    api := NEW CRMApi;
+
+  RETURN api;
+}

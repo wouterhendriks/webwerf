@@ -11,7 +11,7 @@ PUBLIC OBJECTTYPE webwerfDesign EXTEND WebDesignBase
 <
   UPDATE PUBLIC RECORD FUNCTION GetPageConfig()
   {
-    RETURN [ islive := GetDTAPStage() != "development"
+    RETURN [ islive := TRUE//GetDTAPStage() != "development"
            , link_addr_visiting := "https://www.google.nl/maps/place/Hengelosestraat+296,+7521+AM+Enschede/@52.2300925,6.8709351,17z/data=!3m1!4b1!4m5!3m4!1s0x47b813edd1b60dbd:0x238626e4e3005b42!8m2!3d52.2300925!4d6.8731238"
            , link_addr_postal := "https://www.google.nl/maps/place/Ridderspoor+14,+7483+AW+Haaksbergen/@52.1620743,6.7306571,17z/data=!3m1!4b1!4m5!3m4!1s0x47b872c9a8712891:0xdae6a97c6e9e69ca!8m2!3d52.1620743!4d6.7328458"
            , years_xp := UnpackDateTime(GetCurrentDateTime()).year - 2003

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<schemadefinition xmlns="http://www.webhare.net/xmlns/wrd/schemadefinition"
+                  xml:lang="nl"
+                  >
+
+  <object tag="WRD_PERSON" title="Person">
+    <attributes>
+      <email tag="EMAIL" title="E-mail" />
+      <date tag="DOB" title="Date of birth" />
+      <free tag="REMARKS" title="Remarks" />
+      <array tag="CONTACT_MOMENTS">
+        <date tag="WHEN" />
+        <free tag="DESCRIPTION" />
+      </array>
+    </attributes>
+  </object>
+
+  <object tag="WRD_ORGANIZATION" title="Organization">
+    <attributes>
+      <email tag="EMAIL" title="E-mail" />
+    </attributes>
+  </object>
+
+</schemadefinition>

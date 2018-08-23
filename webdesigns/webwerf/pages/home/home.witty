@@ -36,6 +36,7 @@
     <p>Met ruim [years_xp] jaar ervaring in alles wat met het web te maken heeft weet je zeker dat je met Webwerf een betrouwbare partner hebt voor de ontwikkeling van je website.</p>
     <p>Van begin tot eind kun je de bouw en oplevering van je website gerust aan ons overlaten, inclusief domeinnaam en hosting. Wij staan voor razendsnel ladende websites die stabiel én veilig blijven draaien onder alle omstandigheden.</p>
     <p>Ook o.a. web-applicaties, intranetten en e-mailcampagnes behoren tot de mogelijkheden.</p>
+    [!
     <div class="services pure-g">
       <div class="services__service pure-u-1-3 pure-u-md-1-5">
         <div class="services__service-icon flaticon-laptop"></div>
@@ -59,6 +60,7 @@
       </div>
     </div>
     [if not islive]<p>We maken gebruik van het CMS-platform WebHare. Hiermee is véél meer mogelijk dan met een gebruikelijk CMS.[if not islive] <a href="" class="js-popup js-popup-webhare">Nieuwsgierig waarom?</a>[/if]</p>[/if]
+    !]
   </div>
   <span class="after"></span>
 </section>
@@ -71,6 +73,12 @@
     <p>Een kleine greep uit de door ons ontwikkelde websites:</p>
     <div class="pure-g">
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="https://www.fiber-direct.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/fiber-direct.jpg" alt="Fiber Direct" /></a></div>
+        <div class="portfolio__title">
+          Fiber Direct<span class="portfolio__builtwith">(met <a href="https://www.stickybandits.nl/" target="_blank">Sticky Bandits</a>)</span>
+        </div>
+      </div>
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.mrprezident.com" target="_blank"><img class="pure-img" src="[imgroot]portfolio/mr-prezident.jpg" alt="Mr.Prezident" /></a></div>
         <div class="portfolio__title">
           Mr.Prezident<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
@@ -82,6 +90,12 @@
           Twente Airport<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
         </div>
       </div>
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="https://www.pazzieforpeople.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/pazzie.jpg" alt="Pazzie for People" /></a></div>
+        <div class="portfolio__title">
+          Pazzie for People<span class="portfolio__builtwith">(met <a href="https://www.stickybandits.nl/" target="_blank">Sticky Bandits</a>)</span>
+        </div>
+      </div>
       <!--
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.xo-foodgroup.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/xo-food-group.jpg" alt="XO Food Group" /></a></div>
@@ -91,15 +105,15 @@
       </div>
       -->
       <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
-        <div class="portfolio__image"><a href="https://www.technologybase.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/technology-base.jpg" alt="Technology Base" /></a></div>
-        <div class="portfolio__title">
-          Technology Base<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
-        </div>
-      </div>
-      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
         <div class="portfolio__image"><a href="http://www.golfclubweleveld.nl" target="_blank"><img class="pure-img" src="[imgroot]portfolio/golfclub-weleveld.jpg" alt="Golfclub Weleveld" /></a></div>
         <div class="portfolio__title">
           Golfclub Weleveld<span class="portfolio__builtwith">(met <a href="https://nerds.company/" target="_blank">Nerds & Company</a>)</span>
+        </div>
+      </div>
+      <div class="portfolio__col pure-u-1-1 pure-u-md-1-2">
+        <div class="portfolio__image"><a href="https://www.technologybase.nl/" target="_blank"><img class="pure-img" src="[imgroot]portfolio/technology-base.jpg" alt="Technology Base" /></a></div>
+        <div class="portfolio__title">
+          Technology Base<span class="portfolio__builtwith">(met <a href="http://www.b-lex.nl/" target="_blank">B-Lex IT B.V.</a>)</span>
         </div>
       </div>
       <!--
@@ -150,7 +164,7 @@
       <p>Vul dan onderstaand formulier in en we reageren zo snel mogelijk.</p>
     </div>
     <div class="pure-g">
-      <div class="pure-u-1-1 pure-u-sm-14-24 infoblock__col">
+      <div class="pure-u-1-1 pure-u-sm-13-24 infoblock__col">
         <p class="form__successmessage">
           Het formulier is succesvol verstuurd, bedankt!
         </p>
@@ -178,7 +192,7 @@
           </div>
         </form>
       </div>
-      <div class="pure-u-1-1 pure-u-sm-10-24 infoblock__col infoblock__col--right">
+      <div class="pure-u-1-1 pure-u-sm-11-24 infoblock__col infoblock__col--right">
         <div class="contact">
           <div class="contact__row">
             <div class="contact__icon-c">

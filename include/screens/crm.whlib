@@ -1,0 +1,122 @@
+<?wh
+LOADLIB "wh::datetime.whlib";
+LOADLIB "module::tollium/commondialogs.whlib";
+LOADLIB "module::tollium/gettid.whlib";
+LOADLIB "module::tollium/screenbase.whlib";
+LOADLIB "module::wrd/objectapi.whlib";
+
+OBJECT appcontext;
+
+PUBLIC OBJECTTYPE Main EXTEND TolliumScreenBase
+<
+  MACRO Init(RECORD data)
+  {
+    SetTIDLanguage("nl");
+
+    this->addtostartmenu->menuitemname := "Webwerf CRM";
+
+    // get WRD app context
+    appcontext := this->GetAppContext("CRM");
+
+    IF (Length(data.params) > 0)
+    {
+      //this->DoAdd();
+      this->persons->selection := this->persons->rows[0];
+      this->DoEdit();
+    }
+  }
+
+  MACRO DoAdd()
+  {
+    OBJECT scr := this->LoadScreen(".updateperson", [ id := 0 ]);
+    scr->RunModal();
+  }
+
+  MACRO DoEdit()
+  {
+    IF (Length(this->persons->value) != 1)
+      RETURN;
+
+    OBJECT scr := this->LoadScreen(".updateperson", [ id := this->persons->value[0] ]);
+    scr->RunModal();
+  }
+
+  MACRO DoDelete()
+  {
+    IF (this->RunMessageBox(".suredelete") != "yes")
+      RETURN;
+
+    OBJECT work := this->BeginUnvalidatedWork();
+
+    OBJECT wrdpersontype := appcontext->GetTypeByTag("WRD_PERSON");
+    FOREVERY (INTEGER id FROM this->persons->value)
+      wrdpersontype->GetEntity(id)->UpdateFields2([ wrd_limitdate := GetCurrentDateTime() ]);
+
+    work->Finish();
+  }
+
+  RECORD ARRAY FUNCTION MapPersons(RECORD ARRAY persons)
+  {
+    RETURN
+        SELECT *
+          FROM persons;
+  }
+>;
+
+PUBLIC OBJECTTYPE UpdatePerson EXTEND TolliumScreenBase
+<
+  MACRO Init(RECORD data)
+  {
+    this->entity->LoadEntity(appcontext->GetTypeByTag("WRD_PERSON"), data.id);
+
+    IF (ObjectExists(this->entity->wrdentity))
+      this->contactmoments->value := this->entity->wrdentity->GetField("CONTACT_MOMENTS");
+  }
+
+  RECORD FUNCTION ContactMomentsListHelper(RECORD row)
+  {
+  //IF (RecordExists(row)) abort(row);
+    OBJECT dialog := this->LoadScreen(".updatecontactmoment", row);
+    dialog->RunModal();
+    RETURN dialog->GetRow();
+  }
+
+  RECORD FUNCTION xxOnEditContactMoment(RECORD row)
+  {
+    OBJECT dialog := this->LoadScreen(".updatecontactmoment", row);
+    dialog->RunModal();
+
+    RETURN dialog->GetUpdatedRow();
+  }
+
+  BOOLEAN FUNCTION Submit()
+  {
+    OBJECT work := this->BeginWork();
+    IF (work->HasFailed())
+      RETURN work->Finish();
+
+    RECORD updatevalues := [ contact_moments := (SELECT when, description FROM this->contactmoments->rows) ];
+    this->entity->StoreEntity(work, updatevalues);
+
+    RETURN work->Finish();
+  }
+>;
+
+PUBLIC OBJECTTYPE UpdateContactMoment EXTEND TolliumRowEditScreenBase
+<
+  UPDATE MACRO Init(RECORD data)
+  {
+    IF (RecordExists(data))
+      this->row->value := data;
+    ELSE
+      this->when->value := GetCurrentDateTime();
+
+    this->frame->focused := this->description;
+  }
+
+  PUBLIC RECORD FUNCTION GetRow()
+  {
+  //abort(this->row->value);
+    RETURN this->row->value;
+  }
+>;
