@@ -1,3 +1,6 @@
+import '../../webdesigns/general/node_modules/magnific-popup/dist/magnific-popup.css';
+import '../../webdesigns/general/bower_components/pure/pure-min.css';
+import '../../webdesigns/general/bower_components/pure/grids-responsive-min.css';
 require('./photoalbum.scss');
 
 // jQuery & magnific popup

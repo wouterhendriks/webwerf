@@ -2,7 +2,7 @@ const whBase = require('@webhare-system/compat/base');
 
 // load SCSS
 require('../css/webwerf.scss');
-require('../node_modules/font-awesome/css/font-awesome.css');
+// require('../node_modules/font-awesome/css/font-awesome.css');
 
 // require('@webhare-publisher/richcontent/all');
 
