@@ -1,4 +1,4 @@
-import { qSA } from 'dompack/extra/qsa';
+import * as dompack from 'dompack';
 
 require('../../webdesigns/general/bower_components/list.js/dist/list.js'); // NPM package
 const ListPagination = require('./list.pagination.js'); // derived from NPM package
@@ -7,7 +7,7 @@ let orgList = null;
 
 export function setup(options) {
   // disable 'previous page' link
-  qSA('.' + options.classPagePrev).forEach(link => {
+  dompack.qSA('.' + options.classPagePrev).forEach(link => {
     link.classList.add('disabled');
   });
 
@@ -23,8 +23,8 @@ export function setup(options) {
 
   orgList = new List(options.containerId, listOptions);
 
-  qSA('.' + options.classPagePrev).forEach(link => { setPrevNextClick(options, link, false); });
-  qSA('.' + options.classPageNext).forEach(link => { setPrevNextClick(options, link, true); });
+  dompack.qSA('.' + options.classPagePrev).forEach(link => { setPrevNextClick(options, link, false); });
+  dompack.qSA('.' + options.classPageNext).forEach(link => { setPrevNextClick(options, link, true); });
 
   orgList.on('updated', function() {
     window.setTimeout(() => {
@@ -63,11 +63,11 @@ function updatePagination(options) {
 
   const status = orgList.pagination.getPaginationStatus();
 
-  qSA('.' + options.classPagePrev).forEach(link => {
+  dompack.qSA('.' + options.classPagePrev).forEach(link => {
     link.classList.toggle('disabled', status.currentPageIdx < 1);
   });
 
-  qSA('.' + options.classPageNext).forEach(link => {
+  dompack.qSA('.' + options.classPageNext).forEach(link => {
     link.classList.toggle('disabled', status.currentPage === status.nrPages);
   });
 }
