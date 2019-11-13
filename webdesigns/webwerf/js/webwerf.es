@@ -17,8 +17,7 @@ var verge = require('../node_modules/verge/verge.min.js');
 
 import { throttle } from './utilities.es';
 
-import * as dompack from '../bower_components/dompack/src/index';
-import { qS, qSA } from 'dompack/extra/qsa';
+import * as dompack from "dompack";
 
 const logoPositionTop = 120;
 const logoHeight = 48;
@@ -83,7 +82,7 @@ function getScrollPosition() {
 function onScroll() {
   const scrollPos = getScrollPosition();
 
-  qSA('.infoblock:not(.infoblock--first) .infoblock__content').forEach((block) => {
+  dompack.qSA('.infoblock:not(.infoblock--first) .infoblock__content').forEach((block) => {
     if (verge.inY(block, -100)) {
       block.classList.add('enabled');
     }
@@ -92,7 +91,7 @@ function onScroll() {
   // calculate site header opacity
   const scrollPosFullOpacity = 100;
   const relScrollPos = Math.min(scrollPos, scrollPosFullOpacity);
-  qS('.siteheader').style.opacity = (relScrollPos / scrollPosFullOpacity);
+  dompack.qS('.siteheader').style.opacity = (relScrollPos / scrollPosFullOpacity);
 
   document.documentElement.classList.toggle('small-siteheader', scrollPos > 200);
 }
