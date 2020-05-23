@@ -1,0 +1,93 @@
+<?wh
+
+LOADLIB "wh::internet/urls.whlib";
+
+LOADLIB "mod::system/lib/webapi/oauth2.whlib";
+
+
+PUBLIC STATIC OBJECTTYPE WebwerfWebAPI
+<
+  PUBLIC OBJECT browser;
+
+  /// sets the mode with optional settings, options: oauth2
+  PUBLIC PROPERTY mode(pvt_mode, SetMode);
+
+  OBJECT oauth2;
+  STRING restapiurl;
+  STRING pvt_mode;
+
+  MACRO NEW(STRING mode, RECORD options)
+  {
+    this->SetMode(mode, options);
+  }
+
+  PUBLIC VARIANT FUNCTION Request(STRING method, STRING endpoint, RECORD options DEFAULTSTO DEFAULT RECORD)
+  {
+    options := ValidateOptions([ data := DEFAULT RECORD
+                               , urlvariables := DEFAULT RECORD
+                               , wrapresponse := FALSE
+                               , add_slash_in_front := TRUE
+                               ], options);
+
+    IF (options.add_slash_in_front AND Left(endpoint, 1) != "/")
+      endpoint := "/" || endpoint;
+
+    STRING url := UpdateURLVariables(this->restapiurl || endpoint, options.urlvariables);
+
+    method := ToUpperCase(method);
+    STRING ARRAY allowed_methods := ["GET","POST","PATCH","PUT","DELETE"];
+    IF (method NOT IN allowed_methods)
+      THROW NEW Exception("Invalid method. Options: " || AnyToString(allowed_methods,'tree'));
+
+    BLOB body := RecordExists(options.data) ? EncodeJSONBlob(options.data) : DEFAULT BLOB;
+
+    IF(NOT this->oauth2->browser->SendRawRequest(method, url, RECORD[], body) AND NOT options.wrapresponse)
+      this->ThrowLastRequest();
+
+    IF(options.wrapresponse)
+      RETURN [ statustext := this->oauth2->browser->GetHTTPStatusText()
+             , status := this->oauth2->browser->GetHTTPStatusCode()
+             , response := DecodeJSONBlob(this->oauth2->browser->content)
+             ];
+
+    VARIANT result := DecodeJSONBlob(this->oauth2->browser->content);
+
+    IF (TypeId(result) = TypeID(VARIANT ARRAY))
+      result := RECORD[];
+
+    RETURN result;
+  }
+
+  MACRO SetMode(STRING mode, RECORD options)
+  {
+    this->pvt_mode := mode;
+
+    SWITCH (mode)
+    {
+      CASE "oauth2"
+      {
+        options := ValidateOptions([ clientregistrykey := ""
+                                   , tokenregistrykey := ""
+                                   , restapiurl := ""
+                                   ], options
+                                   , [ required := ["clientregistrykey","tokenregistrykey","restapiurl"] ]
+                                   );
+
+        this->oauth2 := NEW Oauth2Connection(CELL[ options.clientregistrykey ]);
+        this->oauth2->SetupTokenUsingRegistryKey(options.tokenregistrykey);
+
+        this->browser := this->oauth2->browser;
+        this->restapiurl := options.restapiurl;
+      }
+      DEFAULT
+      {
+        THROW NEW Exception(`Unknown mode "${mode}"`);
+      }
+    }
+  }
+
+  MACRO ThrowLastRequest()
+  {
+    THROW NEW Exception(`${this->oauth2->browser->href}: ${this->oauth2->browser->GetHTTPStatusText()}`);
+  }
+>;

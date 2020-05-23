@@ -23,7 +23,7 @@
   </publisher>
 
   <services>
-    <webservice name="contactform" transports="jsonrpc" library="rpc.whlib" requirewhaccount="false" primarytrans="auto">
+    <webservice name="contactform" transports="jsonrpc" library="rpc.whlib" requirewhaccount="false" primarytrans="auto" prefix="contactform_">
       <accesscheck />
     </webservice>
   </services>

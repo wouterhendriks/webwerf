@@ -1,0 +1,136 @@
+<?wh
+
+LOADLIB "mod::webwerf/lib/internal/webapi.whlib";
+
+
+CONSTANT STRING restapiurl := "https://moneybird.com/api/v2/";
+
+PUBLIC STATIC OBJECTTYPE WebwerfMoneyBirdAPI
+<
+  OBJECT webapi;
+  STRING administrationid;
+
+  /// enable/disable browser debug boolean
+  PUBLIC PROPERTY debug(this->webapi->browser->debug, this->webapi->browser->debug);
+
+  MACRO NEW(RECORD options)
+  {
+    options := ValidateOptions([ clientregistrykey := ""
+                               , tokenregistrykey := ""
+                               , administrationid := ""
+                               ], options
+                               , [ required := ["clientregistrykey","tokenregistrykey","administrationid"] ]
+                               );
+
+    this->administrationid := options.administrationid;
+
+    this->webapi := NEW WebwerfWebAPI("oauth2", CELL[ options.clientregistrykey
+                                                    , options.tokenregistrykey
+                                                    , restapiurl
+                                                    ]);
+  }
+
+  /** Lists all administrations the current user has access to.
+
+      https://developer.moneybird.com/api/administration/
+
+      @return All administrations the current user has access to
+  */
+  PUBLIC RECORD ARRAY FUNCTION ListAdministrations()
+  {
+    RECORD ARRAY administrations := this->Request("GET", "administrations", [ add_administrationid_to_call := FALSE ]);
+
+    RETURN EnforceStructure([[ country := ""
+                             , currency := ""
+                             , id := ""
+                             , language := ""
+                             , name := ""
+                             , time_zone := ""
+                             ]], administrations);
+  }
+
+  /** Searching for contacts can be done by providing the query parameter with search terms.
+
+      For more info and the query parameter: https://developer.moneybird.com/api/contacts/#get_contacts
+
+      @return A list of contacts in the administration.
+  */
+  PUBLIC RECORD ARRAY FUNCTION ListContacts(RECORD options DEFAULTSTO DEFAULT RECORD)
+  {
+    // FIXME: add pagination (or at the very least an option to return from all pages)
+
+    options := ValidateOptions([ query := "" ], options);
+
+    RECORD requestoptions;
+    IF (options.query != "")
+      requestoptions := CellInsert(requestoptions, "urlvariables", [ query := options.query ]);
+
+    RECORD ARRAY contacts := this->Request("GET", "/contacts", requestoptions);
+
+    RETURN EnforceStructure([[ company_name := ""
+                             , chamber_of_commerce := ""
+                             , id := ""
+                             , customer_id := ""
+                             , email := ""
+                             , firstname := ""
+                             , lastname := ""
+                             ]], contacts);
+  }
+
+  PUBLIC RECORD FUNCTION GetContact(STRING id)
+  {
+    RETURN this->Request("GET", `/contacts/${id}`, [ wrapresponse := TRUE ]);
+  }
+
+  PUBLIC RECORD FUNCTION CreateSalesInvoice(RECORD data)
+  {
+    //RECORD
+    //data := ValidateOptions([ contact_id := 0 ]);
+    RECORD request := this->Request("POST", "sales_invoices",
+      [ data :=
+        [ sales_invoice := [ contact_id := "289267213416793829"
+                           , details_attributes := [[ description := "Rocking Chair"
+                                                   , price := "129.95"
+                                                   ]]
+                           ]
+        ]
+      ]);
+
+    RETURN request;
+  }
+
+  /** Do a lowlevel call straight to the api
+
+      @param method GET, POST, PUT, etc
+      @param endpoint Endpoint URL, eg /sales_invoices
+      @cell options.add_administrationid_to_call If TRUE, adds administration id to endpoint, defaults to TRUE - should only be FALSE for /administrations/
+      @cell options.data Data record (body/attributes) to pass
+      @cell options.wrapresponse If true, accept non-200 responses and wrap the returned body to return the response
+      @cell options.urlvariables Variables to add to the query, eg 'query'
+
+      @return Call result, either a RECORD or RECORD ARRAY, depending on endpoint
+  */
+  PUBLIC VARIANT FUNCTION Request(STRING method, STRING endpoint, RECORD options DEFAULTSTO DEFAULT RECORD)
+  {
+    options := ValidateOptions([ add_administrationid_to_call := TRUE
+                               , data := DEFAULT RECORD
+                               , wrapresponse := FALSE
+                               , urlvariables := DEFAULT RECORD
+                               ], options);
+
+    IF (options.add_administrationid_to_call AND this->administrationid = "")
+      THROW NEW Exception("Administration id must be set in the object (->administrationid). Example: 164243204529456416");
+
+    IF (options.add_administrationid_to_call)
+    {
+      IF (Left(endpoint, 1) = "/")
+        endpoint := Substring(endpoint, 1);
+
+      endpoint := `${this->administrationid}/${endpoint}`;
+    }
+
+    options := CellDelete(options, "add_administrationid_to_call");
+
+    RETURN this->webapi->Request(method, endpoint, options);
+  }
+>;
